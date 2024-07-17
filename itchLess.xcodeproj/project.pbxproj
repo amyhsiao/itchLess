@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23B8C04B2C46961200287BDF /* SceneA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C04A2C46961200287BDF /* SceneA.swift */; };
 		23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C04C2C46961F00287BDF /* GameScene.swift */; };
+		23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C0522C47BC9600287BDF /* ChatView.swift */; };
 		23D974B52C377E01001270AE /* itchLessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D974B42C377E01001270AE /* itchLessApp.swift */; };
 		23D974B72C377E01001270AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D974B62C377E01001270AE /* ContentView.swift */; };
 		23D974B92C377E04001270AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D974B82C377E04001270AE /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		23B8C04A2C46961200287BDF /* SceneA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneA.swift; sourceTree = "<group>"; };
 		23B8C04C2C46961F00287BDF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		23B8C0522C47BC9600287BDF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		23D974B12C377E01001270AE /* itchLess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itchLess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D974B42C377E01001270AE /* itchLessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itchLessApp.swift; sourceTree = "<group>"; };
 		23D974B62C377E01001270AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				23D974B42C377E01001270AE /* itchLessApp.swift */,
 				23D974B62C377E01001270AE /* ContentView.swift */,
 				23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */,
+				23B8C0522C47BC9600287BDF /* ChatView.swift */,
 				23E59E852C3ACC2100E5E39B /* RecordView.swift */,
 				23E59E882C3ACC6400E5E39B /* MonsterView.swift */,
 				23B8C04C2C46961F00287BDF /* GameScene.swift */,
@@ -159,6 +162,7 @@
 				23E59E862C3ACC2100E5E39B /* RecordView.swift in Sources */,
 				23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */,
 				23B8C04B2C46961200287BDF /* SceneA.swift in Sources */,
+				23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */,
 				23D974B52C377E01001270AE /* itchLessApp.swift in Sources */,
 				23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */,
 				23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */,
