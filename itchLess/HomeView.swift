@@ -28,6 +28,9 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 // Yellow text box
                 HStack {
+                    Image("home-head-pic")
+                        .frame(alignment: .leading)
+                        .cornerRadius(8)
                     Text("Various text displayed here")
                         .frame(maxWidth: UIScreen.main.bounds.width * 0.75, alignment: .leading)
                         .padding()

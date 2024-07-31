@@ -19,6 +19,7 @@
 		23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E882C3ACC6400E5E39B /* MonsterView.swift */; };
 		23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */; };
 		23E59E8D2C3ACD1E00E5E39B /* OthersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */; };
+		23EF22DA2C59EFAA0041D6C5 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22D92C59EFAA0041D6C5 /* InitialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		23E59E882C3ACC6400E5E39B /* MonsterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterView.swift; sourceTree = "<group>"; };
 		23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersView.swift; sourceTree = "<group>"; };
+		23EF22D92C59EFAA0041D6C5 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				23D974B42C377E01001270AE /* itchLessApp.swift */,
 				23D974B62C377E01001270AE /* ContentView.swift */,
+				23EF22D92C59EFAA0041D6C5 /* InitialView.swift */,
 				23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */,
 				23B8C0562C48B47D00287BDF /* TodoCardView.swift */,
 				23B8C0522C47BC9600287BDF /* ChatView.swift */,
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EF22DA2C59EFAA0041D6C5 /* InitialView.swift in Sources */,
 				23B8C0572C48B47D00287BDF /* TodoCardView.swift in Sources */,
 				23D974B72C377E01001270AE /* ContentView.swift in Sources */,
 				23E59E862C3ACC2100E5E39B /* RecordView.swift in Sources */,

@@ -11,7 +11,7 @@ import SwiftUI
 struct itchLessApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitialView()
         }
     }
 }
