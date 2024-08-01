@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct itchLessApp: App {
+    @StateObject private var scoreManager = ScoreManager()
     var body: some Scene {
         WindowGroup {
             InitialView()
+                .environmentObject(scoreManager)
         }
     }
 }

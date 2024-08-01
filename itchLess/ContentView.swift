@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         TabView{
             HomeView()
@@ -30,9 +31,11 @@ struct ContentView: View {
                     Image("ic-list")
                 }
         }
+        
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(ScoreManager())
 }

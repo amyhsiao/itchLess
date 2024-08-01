@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ChatView: View {
+struct NotifView: View {
     var body: some View {
-        Text("Hello, ChatView!")
+        Text("Hello, Notification View!")
             .navigationTitle("Chat")
     }
 }
 
 #Preview {
-    ChatView()
+    NotifView()
 }

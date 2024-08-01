@@ -20,6 +20,9 @@
 		23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */; };
 		23E59E8D2C3ACD1E00E5E39B /* OthersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */; };
 		23EF22DA2C59EFAA0041D6C5 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22D92C59EFAA0041D6C5 /* InitialView.swift */; };
+		23EF22DC2C59FAC30041D6C5 /* ClinicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22DB2C59FAC30041D6C5 /* ClinicView.swift */; };
+		23EF22DF2C5B2D410041D6C5 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22DE2C5B2D410041D6C5 /* ReminderView.swift */; };
+		23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersView.swift; sourceTree = "<group>"; };
 		23EF22D92C59EFAA0041D6C5 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		23EF22DB2C59FAC30041D6C5 /* ClinicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicView.swift; sourceTree = "<group>"; };
+		23EF22DE2C5B2D410041D6C5 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,14 +78,13 @@
 				23D974B42C377E01001270AE /* itchLessApp.swift */,
 				23D974B62C377E01001270AE /* ContentView.swift */,
 				23EF22D92C59EFAA0041D6C5 /* InitialView.swift */,
-				23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */,
-				23B8C0562C48B47D00287BDF /* TodoCardView.swift */,
-				23B8C0522C47BC9600287BDF /* ChatView.swift */,
+				23EF22DD2C5B2CCF0041D6C5 /* Home */,
 				23E59E852C3ACC2100E5E39B /* RecordView.swift */,
 				23E59E882C3ACC6400E5E39B /* MonsterView.swift */,
 				23B8C04C2C46961F00287BDF /* GameScene.swift */,
 				23B8C04A2C46961200287BDF /* SceneA.swift */,
 				23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */,
+				23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */,
 				23D974B82C377E04001270AE /* Assets.xcassets */,
 				23D974BA2C377E04001270AE /* Preview Content */,
 			);
@@ -92,6 +97,18 @@
 				23D974BB2C377E04001270AE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		23EF22DD2C5B2CCF0041D6C5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */,
+				23B8C0522C47BC9600287BDF /* ChatView.swift */,
+				23EF22DB2C59FAC30041D6C5 /* ClinicView.swift */,
+				23EF22DE2C5B2D410041D6C5 /* ReminderView.swift */,
+				23B8C0562C48B47D00287BDF /* TodoCardView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +185,10 @@
 				23B8C0572C48B47D00287BDF /* TodoCardView.swift in Sources */,
 				23D974B72C377E01001270AE /* ContentView.swift in Sources */,
 				23E59E862C3ACC2100E5E39B /* RecordView.swift in Sources */,
+				23EF22DC2C59FAC30041D6C5 /* ClinicView.swift in Sources */,
 				23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */,
+				23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */,
+				23EF22DF2C5B2D410041D6C5 /* ReminderView.swift in Sources */,
 				23B8C04B2C46961200287BDF /* SceneA.swift in Sources */,
 				23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */,
 				23D974B52C377E01001270AE /* itchLessApp.swift in Sources */,
