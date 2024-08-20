@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotifView: View {
     var body: some View {
-        Text("Hello, Notification View!")
+        Text("Hello, Notification View!!!")
             .navigationTitle("Chat")
     }
 }
