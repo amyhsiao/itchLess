@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TodoItem: Identifiable {
+struct TodoItem: Identifiable, Equatable {
     let id = UUID()
     let title: String
     var isCompleted: Bool

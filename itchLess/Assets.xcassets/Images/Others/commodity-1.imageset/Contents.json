@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NOTIFICATION.png",
+      "filename" : "Rectangle 40029.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "NOTIFICATION@2x.png",
+      "filename" : "Rectangle 40029@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "NOTIFICATION@3x.png",
+      "filename" : "Rectangle 40029@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,23 +13,17 @@ struct HomeView: View {
     
     //for info banner
     @State private var currentInfoIndex = 0
-    let infohead = ["好診所推薦", "最新資訊", "病友活動"]
-    let infobody = ["想要找離家近、口碑推薦的使\n用完整數位照護的診所的診所嗎?\n立刻看看有哪些名單!",
-        "關於異味性皮膚炎最新的研究與發現",
-        "病友協會最近有哪些活動呢？\n歡迎來參加哦！"]
+    let infoimage = ["home-news-1", "home-news-2", "home-news-3"]
     let infoview = [ClinicView(), ClinicView(), ClinicView()]
 
     //for reminder banner
     @State private var currentBannerIndex = 0
     @State private var isReminderCompleted = [false, false, false]
-    let remindhead = ["飲食篇", "癢癢篇", "保養篇"]
-    let remindbody = [
-        "濕疹發作時，\n避開容易引起過敏反應的食物\n以及刺激性食物，例如酒精、\n辛辣食物呦",
-        "避免用手抓摳\n若抓傷皮膚，可能會有細菌感染。\n寶寶皮膚搔癢難耐時，可將毛巾沾冷水，\n擰乾並敷在患部，緩解不適感",
-        "出門前、洗澡後，擦拭乳液可以幫\n助肌膚鎖水、抵禦外界刺激，\n帶寶寶一步步養回健康的角質層"
-    ]
-    let remindpoints = [100, 100, 100]
+    let remindimage = ["home-reminder-1", "home-reminder-2", "home-reminder-3"]
+    let remindpoints = [10, 10, 10]
     
+    // manage checklist from EditTodo
+    @EnvironmentObject var checklistManager: ChecklistManager
 
     //for todo list
     @State private var todoItems = [
@@ -39,6 +33,7 @@ struct HomeView: View {
             TodoItem(title: "Todo 4", isCompleted: false)
         ]
     
+    @State private var firstTime = false
     var body: some View {
         
         NavigationView {
@@ -49,92 +44,63 @@ struct HomeView: View {
                     Image("home-head-pic")
                         .frame(alignment: .leading)
                         .cornerRadius(8)
+                        .padding(.horizontal)
+                    
                     VStack(spacing: 5){
                         Text("Hi, 小明爸爸/媽媽")
                             .font(.system(size: 24))
+                            .bold()
                             .frame(maxWidth: UIScreen.main.bounds.width * 0.65, alignment: .leading)
                             .foregroundColor(Color(red:0.424, green: 0.424, blue: 0.424))
-                        Text("今日天氣偏乾燥，要多注意寶寶身體哦")
+                        Text("今天天氣偏乾燥，要多多注意寶寶\n皮膚保濕哦～")
                             .font(.system(size: 14))
                             .frame(maxWidth: UIScreen.main.bounds.width * 0.65, alignment: .leading)
                             .foregroundColor(Color(red:0.424, green: 0.424, blue: 0.424))
-                        Button(action: {
-                            //function for button: increase score
-                            scoreManager.resetScore()
-                        }) {
-                            Text("(click to reset) Score: \(scoreManager.score)")
-                                .font(.system(size: 16))
-                                .frame(maxWidth: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                                .foregroundColor(Color(red:0.424, green: 0.424, blue: 0.424))
-                        }
                         
                     }
                     .background(.white)
                     .cornerRadius(8)
+                    .offset(x:-20)
 
 
-                    // Notification view
+                    // points view
         
-                    NavigationLink(destination: NotifView())
+                    ZStack(alignment: .bottom)
                     {
-                        Image("home-bell")
+                        Image("home-bbdollars")
                             .foregroundColor(.gray)
                             .scaledToFit()
-                            .frame(width: 140, height: 140)
+                            .frame(width: 160, height: 160, alignment: .leading)
                             .imageScale(.large)
                             .padding(.horizontal, -45)
                             .padding(.vertical, -50)
-                    }
-                }
-                .padding(.vertical, -1)
-                .background (Color.white)
-                .frame(alignment: .leading)
-
-                ScrollView(.vertical){
-                    // 第一個banner
-                    TabView(selection: $currentInfoIndex) {
-                        ForEach(0..<infohead.count, id: \.self) { index in
-                            HStack(){
-                                VStack(spacing: 0){
-                                    Text(infohead[index])
-                                        .font(.system(size: 20, weight: .bold))
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                                        .padding(.horizontal)
-                                        .foregroundColor(Color(red:0.716, green: 0.456, blue: 0.656))
-                                    Text(infobody[index])
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                                        .padding(.horizontal)
-                                        .foregroundColor(Color(red:0.588, green: 0.588, blue: 0.588))
-                                    NavigationLink(destination: ClinicView())
-                                    {
-                                        Image("home-clinic")
-                                            .scaledToFit()
-                                            .imageScale(.large)
-                                            .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .leading)
-                                            .padding(.horizontal)
-                                    }
-                                }
-                                Image("home-baby")
-                                    .frame(width:110, height:110)
-                            }
+                        
+                        // Button for testing
+                        Button(action: {
+                            //function for button: increase score
+                            scoreManager.resetScore()
+                        }) {
+                            Text("\(scoreManager.score)")
+                                .font(.title)
+                                .offset(x: -45, y: -5)
+                                .foregroundColor(Color(red:0.3, green: 0.3, blue: 0.3))
                         }
                     }
-                    .frame(height: 170)
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                    .background(
-                        Color(red:0.948, green: 0.948,  blue:0.964)
-                            .frame(height: 250)
-                    )
-                    .cornerRadius(8)
-                    
+                    .offset(x:20)
+                }
+                .padding(.bottom, -10)
+                .background (Color.white)
+                .frame(alignment: .leading)
+                
+                ScrollView(.vertical){
+                     
                     //間隔
                     Image("home-pink-line")
                         .padding(.vertical)
                     
                     //TEXT
                     HStack(){
-                        Text("每日三則小小提醒")
+                        Text("最新資訊")
                             .foregroundColor(Color(red:0.38, green: 0.38, blue: 0.38))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal)
@@ -148,23 +114,77 @@ struct HomeView: View {
                                 .font(.system(size: 16))
                         }
                     }
+                    .padding(.vertical, -10)
+                    .offset(y: -5)
+                    
+                    
+                    // 第一個banner
+                    TabView(selection: $currentInfoIndex) {
+                        ForEach(0..<infoimage.count, id: \.self) { index in
+                            
+                            ZStack(){
+                                Image(infoimage[index])
+                                    .frame(width:110, height:110)
+                                NavigationLink(destination: infoview[index])
+                                {
+                                    Image("home-clinic")
+                                        //.scaledToFit()
+                                        .imageScale(.large)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .trailing)
+                                    
+                                }
+                                .offset(y: 50)
+                                .padding(.trailing, 40)
+                            }
+                        }
+                    }
+                    .frame(height: 170)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .cornerRadius(8)
+                    
+                    //諮詢小怪&環境守護者
+                    
+                    HStack(){
+                        NavigationLink(destination: ClinicView())
+                        {
+                            Image("home-chatbot")
+                        }
+                        NavigationLink(destination: ClinicView())
+                        {
+                            Image("home-environment")
+                        }
+                    }
+                    
+                    
+                    //間隔
+                    Image("home-pink-line")
+                        //.padding(.vertical)
+                    
+                    //TEXT
+                    HStack(){
+                        Text("每日三則小小提醒")
+                            .foregroundColor(Color(red:0.38, green: 0.38, blue: 0.38))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal)
+                            .font(.system(size: 18))
+                            .offset(y: 5)
+                        NavigationLink(destination: ReminderView())
+                        {
+                            Text("See all")
+                                .foregroundColor(Color(red:0.964, green: 0.652, blue: 0.728))
+                                .frame(alignment: .trailing)
+                                .padding(.horizontal)
+                                .font(.system(size: 16))
+                        }
+                    }
                     
                     // 第二個 banner：每日三則小小提醒
                     TabView(selection: $currentBannerIndex) {
-                        ForEach(0..<remindhead.count, id: \.self) { index in
-                            VStack(spacing: 0){
-                                Text(remindhead[index])
-                                    .font(.system(size: 28, weight: .bold))
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                                    .padding(.top, -80)
-                                    .foregroundColor(Color(red:0.616, green: 0.356, blue: 0.556))
-                                Text(remindbody[index])
-                                    .font(.system(size: 18))
-                                    .lineSpacing(8)
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                                    .padding(.top, -200)
-                                    .foregroundColor(Color(red:0.3, green: 0.3, blue: 0.3))
-                                    .multilineTextAlignment(.center)
+                        ForEach(0..<remindimage.count, id: \.self) { index in
+                            ZStack(alignment: .bottomTrailing){
+                                Image(remindimage[index])
+                                    .frame(width:110, height:110)
+                                
                                 Button(action: {
                                     //function for button: increase score
                                     if !isReminderCompleted[index] {
@@ -173,49 +193,105 @@ struct HomeView: View {
                                     }
                                 }) {
                                     if !isReminderCompleted[index] {
-                                        Text("瞭解了！")
-                                            .font(.headline)
+                                        Text("瞭解！獲得\(remindpoints[index])硬幣")
                                             .padding()
-                                            .background(Color(red:0.616, green: 0.356, blue: 0.556))
+                                            .font(.system(size:16))
+                                            .bold()
+                                            .background(Color(red:178/256, green: 114/256, blue: 164/256))
                                             .foregroundColor(.white)
                                             .cornerRadius(10)
                                     } else{
-                                        Text("已完成！")
-                                            .font(.headline)
+                                        Text("完成了！")
+                                            .font(.system(size:16))
                                             .padding()
-                                            .background(Color(red:0.9, green: 0.9, blue: 0.9))
+                                            .background(Color(red:0.7, green: 0.7, blue: 0.7))
                                             .foregroundColor(.white)
                                             .cornerRadius(10)
+                                        
                                     }
                                 }
-                                .padding(.top, -100)
+                                .frame(width:170, height:50)
+                                .offset(x: 110, y:45)
                             }
-                                
+                            .offset(x: -25, y: -40)
+
+                        
                         }
                     }
                     .frame(height: 300)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                    .background(Color(red:0.9, green:0.81, blue:0.9))
+                    //.background(Color(red:0.9, green:0.81, blue:0.9))
                     .cornerRadius(8)
+                    .padding(.bottom, -10)
                     
-                    //Todo
-                    ScrollView{
-                        VStack(spacing: 20) {
-                            Text("Todo List")
-                                .font(.largeTitle)
-                                .padding()
-                            
-                            ForEach($todoItems) { $item in
-                                TodoCardView(item: $item)
+                    
+                    //親子共同任務！
+                    //間隔
+                    Image("home-pink-line")
+                        .padding(.top, -50)
+                    
+                    //TEXT
+                    HStack(){
+                        VStack(){
+                            Text("親子共同任務")
+                                .foregroundColor(Color(red:0.38, green: 0.38, blue: 0.38))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                                .font(.system(size: 18))
+                            Text("好的習慣，是保護自己最棒的武器")
+                                .foregroundColor(Color(red:0.38, green: 0.38, blue: 0.38))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                                .font(.system(size: 14))
+                        }
+                        Button(action: {
+                            withAnimation{
+                                firstTime.toggle()
                             }
                             
-                            Spacer()
+                        }) {
+                            if !firstTime{
+                                Text("我是第一次使用")
+                                    .foregroundColor(Color(red:0.964, green: 0.652, blue: 0.728))
+                                    .frame(alignment: .trailing)
+                                    .font(.system(size: 14))
+                                    .offset(x: -15, y:-10)
+                            }
+                            else{
+                                Text("關閉")
+                                    .foregroundColor(Color(red:0.964, green: 0.652, blue: 0.728))
+                                    .frame(alignment: .trailing)
+                                    .font(.system(size: 14))
+                                    .offset(x: -25, y:-10)
+                                    
+                            }
+                                
                         }
-                        
-                        .padding()
                     }
-                    .background(Color.gray.opacity(0.1))
-                    Spacer()
+                    .padding(.top, -45)
+                    
+                    if firstTime {
+                        Image("home-firstTime")
+                            .offset(y: -10)
+                    }
+                    
+                    //*/
+                    
+                    //Todo
+                    ZStack(alignment: .leading){
+                        Image("home-todo-bg")
+                            .frame(width: 400)
+                        NavigationLink(destination: EditTodo()){
+                            Text("打造或修改清單")
+                        }
+                        ForEach(checklistManager.checkedItems) { item in
+                                        Text(item.title)
+                                    }
+                        .offset(x: 220, y: -125)
+                    }
+                    .offset(x: 30)
+                    
+                    
                 }
                 .padding()
             }
@@ -226,4 +302,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environmentObject(ScoreManager())
+        .environmentObject(ChecklistManager())
 }

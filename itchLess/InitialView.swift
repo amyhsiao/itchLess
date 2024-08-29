@@ -58,4 +58,5 @@ struct InitialView: View {
 #Preview {
     InitialView()
         .environmentObject(ScoreManager())
+        .environmentObject(ChecklistManager())
 }

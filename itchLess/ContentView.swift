@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var checklistManager: ChecklistManager
+    @EnvironmentObject var scoreManager: ScoreManager
     
     var body: some View {
         TabView{
@@ -38,4 +40,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(ScoreManager())
+        .environmentObject(ChecklistManager())
 }
+

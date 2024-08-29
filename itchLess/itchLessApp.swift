@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct itchLessApp: App {
     @StateObject private var scoreManager = ScoreManager()
+    @StateObject private var checklistManager = ChecklistManager()
     var body: some Scene {
         WindowGroup {
             InitialView()
                 .environmentObject(scoreManager)
+                .environmentObject(checklistManager)
         }
     }
 }
