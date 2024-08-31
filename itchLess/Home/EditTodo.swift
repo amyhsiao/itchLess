@@ -2,7 +2,6 @@ import SwiftUI
 
 struct EditTodo: View {
     @EnvironmentObject var checklistManager: ChecklistManager
-    let TodoType = ["editTodo-skin", "editTodo-drug", "editTodo-skin", "editTodo-skin", "editTodo-clean", "editTodo-clean", "editTodo-clean", "editTodo-clean"]
 
     var body: some View {
         VStack {
@@ -12,68 +11,193 @@ struct EditTodo: View {
                 .font(.system(size: 24))
                 .padding(.top, 20)
             
+            //建議每天
             ZStack(alignment: .center) {
                 Image("editTodo-box-1")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 350, alignment: .center)
+                    //.scaledToFit()
+                    .frame(width: 350, height: 200, alignment: .center)
                 
                 VStack {
                     Text("建議每天")
+                        .bold()
                     ForEach(0..<4) { index in
                         let item = checklistManager.allItems[index]
                         HStack {
                             // Checkbox image
                             Image(systemName: item.isChecked ? "checkmark.square" : "square")
                                 .onTapGesture {
-                                    checklistManager.toggleChecked(item) // Toggle checked state
+                                    checklistManager.toggleChecked(item)
                                 }
-                                .frame(alignment: .leading)
+                                .frame(width: 15, alignment: .leading)
                             
                             // List text
                             Text(item.title)
                                 .font(.system(size: 18))
                                 .foregroundColor(item.isChecked ? .black : .gray)
+                                .frame(maxWidth: 115, alignment: .leading)
                             
                             // List type
-                            Image(TodoType[index])
+                            Image(item.TodoType)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 26)
                             
-                            // Toggle frequency
+                            // Frequency Toggle
+                            FrequencyToggleView(frequency: Binding(
+                                get: { checklistManager.allItems[index].frequency },
+                                set: { checklistManager.setFrequency(for: item, to: $0) }
+                            ))
+                            .frame(width: 120, alignment: .trailing)
+                            .padding(.trailing, -10)
                             
-                            Text(item.frequency.rawValue) // Display current frequency
-                                .onTapGesture{
-                                    checklistManager.toggleFrequency(for: item)
-                                }
-                                .padding(5)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(5)
-                             
-                            Spacer()
                         }
                         .padding(.vertical, 3)
                     }
                 }
-                .padding(.leading, 20)
-                .frame(width: 350)
+                .padding(.leading, 0)
+                .padding(.trailing, 8)
+                .frame(width: 380)
             }
             .frame(maxWidth: .infinity)
             
-            Image("editTodo-box-2")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 350, alignment: .center)
+            //建議每週
+            ZStack(alignment: .center) {
+                Image("editTodo-box-2")
+                    .resizable()
+                    //.scaledToFit()
+                    .frame(width: 350, height: 120, alignment: .center)
+                
+                VStack {
+                    Text("建議每週")
+                        .bold()
+                    ForEach(4..<6) { index in
+                        let item = checklistManager.allItems[index]
+                        HStack {
+                            // Checkbox image
+                            Image(systemName: item.isChecked ? "checkmark.square" : "square")
+                                .onTapGesture {
+                                    checklistManager.toggleChecked(item)
+                                }
+                                .frame(width: 15, alignment: .leading)
+                            
+                            // List text
+                            Text(item.title)
+                                .font(.system(size: 18))
+                                .foregroundColor(item.isChecked ? .black : .gray)
+                                .frame(maxWidth: 111, alignment: .leading)
+                            
+                            // List type
+                            Image(item.TodoType)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 85)
+                                .padding(.trailing, 0)
+                                .padding(.leading, -7)
+                            
+                            // Frequency Toggle
+                            FrequencyToggleView(frequency: Binding(
+                                get: { checklistManager.allItems[index].frequency },
+                                set: { checklistManager.setFrequency(for: item, to: $0) }
+                            ))
+                            .frame(width: 120, alignment: .trailing)
+                            .padding(.trailing, -10)
+                            .padding(.leading, -7)
+                            
+                        }
+                        .padding(.vertical, 3)
+                    }
+                }
+                .padding(.leading, 0)
+                .padding(.trailing, 8)
+                .frame(width: 380)
+            }
+            .frame(maxWidth: .infinity)
 
-            Image("editTodo-box-3")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 350, alignment: .center)
+            //建議每週
+            ZStack(alignment: .center) {
+                Image("editTodo-box-3")
+                    .resizable()
+                    //.scaledToFit()
+                    .frame(width: 350, height: 120, alignment: .center)
+                
+                VStack {
+                    Text("建議每月")
+                        .bold()
+                    ForEach(6..<8) { index in
+                        let item = checklistManager.allItems[index]
+                        HStack {
+                            // Checkbox image
+                            Image(systemName: item.isChecked ? "checkmark.square" : "square")
+                                .onTapGesture {
+                                    checklistManager.toggleChecked(item)
+                                }
+                                .frame(width: 15, alignment: .leading)
+                            
+                            // List text
+                            Text(item.title)
+                                .font(.system(size: 18))
+                                .foregroundColor(item.isChecked ? .black : .gray)
+                                .frame(maxWidth: 111, alignment: .leading)
+                            
+                            // List type
+                            Image(item.TodoType)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 85)
+                                .padding(.trailing, 0)
+                                .padding(.leading, -7)
+                            
+                            // Frequency Toggle
+                            FrequencyToggleView(frequency: Binding(
+                                get: { checklistManager.allItems[index].frequency },
+                                set: { checklistManager.setFrequency(for: item, to: $0) }
+                            ))
+                            .frame(width: 120, alignment: .trailing)
+                            .padding(.trailing, -10)
+                            .padding(.leading, -7)
+                            
+                        }
+                        .padding(.vertical, 3)
+                    }
+                }
+                .padding(.leading, 0)
+                .padding(.trailing, 8)
+                .frame(width: 380)
+            }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
+
+struct FrequencyToggleView: View {
+    @Binding var frequency: Frequency
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(Frequency.allCases) { freq in
+                Button(action: {
+                    withAnimation {
+                        frequency = freq
+                    }
+                }) {
+                    Text(freq.rawValue)
+                        .font(.system(size: 14))
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 0)
+                        .frame(maxWidth: .infinity)
+                        .background(frequency == freq ? Color.secondary : Color.clear)
+                        .foregroundColor(frequency == freq ? .white : .secondary)
+                }
+            }
+        }
+        .background(Color.blue.opacity(0.2))
+        .cornerRadius(8)
+        .padding(.horizontal, 0)
+    }
+}
+
 
 #Preview {
     EditTodo()

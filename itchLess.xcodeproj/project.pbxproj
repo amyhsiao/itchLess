@@ -25,6 +25,7 @@
 		23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */; };
 		23FE85932C808B28000285CA /* ChecklistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85922C808B28000285CA /* ChecklistManager.swift */; };
 		23FE85952C8091CA000285CA /* EditTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85942C8091CA000285CA /* EditTodo.swift */; };
+		23FE85992C82E5DF000285CA /* FilteredChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85982C82E5DF000285CA /* FilteredChecklistView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		23FE85922C808B28000285CA /* ChecklistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistManager.swift; sourceTree = "<group>"; };
 		23FE85942C8091CA000285CA /* EditTodo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodo.swift; sourceTree = "<group>"; };
+		23FE85982C82E5DF000285CA /* FilteredChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredChecklistView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */,
+				23FE85982C82E5DF000285CA /* FilteredChecklistView.swift */,
 				23FE85942C8091CA000285CA /* EditTodo.swift */,
 				23B8C0522C47BC9600287BDF /* ChatView.swift */,
 				23EF22DB2C59FAC30041D6C5 /* ClinicView.swift */,
@@ -194,6 +197,7 @@
 				23EF22DC2C59FAC30041D6C5 /* ClinicView.swift in Sources */,
 				23FE85952C8091CA000285CA /* EditTodo.swift in Sources */,
 				23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */,
+				23FE85992C82E5DF000285CA /* FilteredChecklistView.swift in Sources */,
 				23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */,
 				23EF22DF2C5B2D410041D6C5 /* ReminderView.swift in Sources */,
 				23B8C04B2C46961200287BDF /* SceneA.swift in Sources */,
