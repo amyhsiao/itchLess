@@ -15,7 +15,6 @@
 		23D974B72C377E01001270AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D974B62C377E01001270AE /* ContentView.swift */; };
 		23D974B92C377E04001270AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D974B82C377E04001270AE /* Assets.xcassets */; };
 		23D974BC2C377E04001270AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D974BB2C377E04001270AE /* Preview Assets.xcassets */; };
-		23E59E862C3ACC2100E5E39B /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E852C3ACC2100E5E39B /* RecordView.swift */; };
 		23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E882C3ACC6400E5E39B /* MonsterView.swift */; };
 		23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */; };
 		23E59E8D2C3ACD1E00E5E39B /* OthersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */; };
@@ -26,6 +25,16 @@
 		23FE85932C808B28000285CA /* ChecklistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85922C808B28000285CA /* ChecklistManager.swift */; };
 		23FE85952C8091CA000285CA /* EditTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85942C8091CA000285CA /* EditTodo.swift */; };
 		23FE85992C82E5DF000285CA /* FilteredChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FE85982C82E5DF000285CA /* FilteredChecklistView.swift */; };
+		3A64A6962C93036800E3992B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3A64A6952C93036800E3992B /* SwiftUICharts */; };
+		3A64A6A72C93075800E3992B /* RecordEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6A52C93075800E3992B /* RecordEntranceView.swift */; };
+		3A64A6A82C93075800E3992B /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6A62C93075800E3992B /* RecordView.swift */; };
+		3A64A6AE2C93076100E3992B /* ScoradScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6A92C93076100E3992B /* ScoradScoreManager.swift */; };
+		3A64A6AF2C93076100E3992B /* ScoradStepOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6AA2C93076100E3992B /* ScoradStepOneView.swift */; };
+		3A64A6B02C93076100E3992B /* BodyPartShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6AB2C93076100E3992B /* BodyPartShape.swift */; };
+		3A64A6B12C93076100E3992B /* ScoradStepTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6AC2C93076100E3992B /* ScoradStepTwoView.swift */; };
+		3A64A6B22C93076100E3992B /* ScoradStepThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A64A6AD2C93076100E3992B /* ScoradStepThreeView.swift */; };
+		3AC1F8422C8FEF180051C78D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1F8412C8FEF180051C78D /* MapView.swift */; };
+		3AC1F8442C8FEF580051C78D /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC1F8432C8FEF580051C78D /* MapData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +47,6 @@
 		23D974B62C377E01001270AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		23D974B82C377E04001270AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D974BB2C377E04001270AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		23E59E852C3ACC2100E5E39B /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		23E59E882C3ACC6400E5E39B /* MonsterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterView.swift; sourceTree = "<group>"; };
 		23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersView.swift; sourceTree = "<group>"; };
@@ -49,6 +57,15 @@
 		23FE85922C808B28000285CA /* ChecklistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistManager.swift; sourceTree = "<group>"; };
 		23FE85942C8091CA000285CA /* EditTodo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodo.swift; sourceTree = "<group>"; };
 		23FE85982C82E5DF000285CA /* FilteredChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredChecklistView.swift; sourceTree = "<group>"; };
+		3A64A6A52C93075800E3992B /* RecordEntranceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordEntranceView.swift; sourceTree = "<group>"; };
+		3A64A6A62C93075800E3992B /* RecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		3A64A6A92C93076100E3992B /* ScoradScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoradScoreManager.swift; sourceTree = "<group>"; };
+		3A64A6AA2C93076100E3992B /* ScoradStepOneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoradStepOneView.swift; sourceTree = "<group>"; };
+		3A64A6AB2C93076100E3992B /* BodyPartShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyPartShape.swift; sourceTree = "<group>"; };
+		3A64A6AC2C93076100E3992B /* ScoradStepTwoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoradStepTwoView.swift; sourceTree = "<group>"; };
+		3A64A6AD2C93076100E3992B /* ScoradStepThreeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoradStepThreeView.swift; sourceTree = "<group>"; };
+		3AC1F8412C8FEF180051C78D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3AC1F8432C8FEF580051C78D /* MapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A64A6962C93036800E3992B /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +104,14 @@
 				23FE85922C808B28000285CA /* ChecklistManager.swift */,
 				23EF22D92C59EFAA0041D6C5 /* InitialView.swift */,
 				23EF22DD2C5B2CCF0041D6C5 /* Home */,
-				23E59E852C3ACC2100E5E39B /* RecordView.swift */,
 				23E59E882C3ACC6400E5E39B /* MonsterView.swift */,
+				3A64A6892C93030B00E3992B /* RecordFunction */,
 				23B8C04C2C46961F00287BDF /* GameScene.swift */,
 				23B8C04A2C46961200287BDF /* SceneA.swift */,
 				23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */,
 				23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */,
 				23D974B82C377E04001270AE /* Assets.xcassets */,
+				3AC1F83D2C8FED5E0051C78D /* Map Function */,
 				23D974BA2C377E04001270AE /* Preview Content */,
 			);
 			path = itchLess;
@@ -120,6 +139,29 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		3A64A6892C93030B00E3992B /* RecordFunction */ = {
+			isa = PBXGroup;
+			children = (
+				3A64A6A52C93075800E3992B /* RecordEntranceView.swift */,
+				3A64A6A62C93075800E3992B /* RecordView.swift */,
+				3A64A6AB2C93076100E3992B /* BodyPartShape.swift */,
+				3A64A6A92C93076100E3992B /* ScoradScoreManager.swift */,
+				3A64A6AA2C93076100E3992B /* ScoradStepOneView.swift */,
+				3A64A6AD2C93076100E3992B /* ScoradStepThreeView.swift */,
+				3A64A6AC2C93076100E3992B /* ScoradStepTwoView.swift */,
+			);
+			path = RecordFunction;
+			sourceTree = "<group>";
+		};
+		3AC1F83D2C8FED5E0051C78D /* Map Function */ = {
+			isa = PBXGroup;
+			children = (
+				3AC1F8412C8FEF180051C78D /* MapView.swift */,
+				3AC1F8432C8FEF580051C78D /* MapData.swift */,
+			);
+			path = "Map Function";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,6 +178,9 @@
 			dependencies = (
 			);
 			name = itchLess;
+			packageProductDependencies = (
+				3A64A6952C93036800E3992B /* SwiftUICharts */,
+			);
 			productName = itchLess;
 			productReference = 23D974B12C377E01001270AE /* itchLess.app */;
 			productType = "com.apple.product-type.application";
@@ -164,6 +209,9 @@
 				Base,
 			);
 			mainGroup = 23D974A82C377E01001270AE;
+			packageReferences = (
+				3A64A6942C93036800E3992B /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 23D974B22C377E01001270AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,20 +241,28 @@
 				23EF22DA2C59EFAA0041D6C5 /* InitialView.swift in Sources */,
 				23B8C0572C48B47D00287BDF /* TodoCardView.swift in Sources */,
 				23D974B72C377E01001270AE /* ContentView.swift in Sources */,
-				23E59E862C3ACC2100E5E39B /* RecordView.swift in Sources */,
 				23EF22DC2C59FAC30041D6C5 /* ClinicView.swift in Sources */,
 				23FE85952C8091CA000285CA /* EditTodo.swift in Sources */,
 				23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */,
 				23FE85992C82E5DF000285CA /* FilteredChecklistView.swift in Sources */,
+				3A64A6B12C93076100E3992B /* ScoradStepTwoView.swift in Sources */,
 				23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */,
 				23EF22DF2C5B2D410041D6C5 /* ReminderView.swift in Sources */,
+				3AC1F8442C8FEF580051C78D /* MapData.swift in Sources */,
 				23B8C04B2C46961200287BDF /* SceneA.swift in Sources */,
 				23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */,
 				23D974B52C377E01001270AE /* itchLessApp.swift in Sources */,
+				3A64A6A82C93075800E3992B /* RecordView.swift in Sources */,
+				3A64A6B22C93076100E3992B /* ScoradStepThreeView.swift in Sources */,
 				23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */,
+				3A64A6AF2C93076100E3992B /* ScoradStepOneView.swift in Sources */,
 				23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */,
+				3AC1F8422C8FEF180051C78D /* MapView.swift in Sources */,
+				3A64A6A72C93075800E3992B /* RecordEntranceView.swift in Sources */,
+				3A64A6B02C93076100E3992B /* BodyPartShape.swift in Sources */,
 				23FE85932C808B28000285CA /* ChecklistManager.swift in Sources */,
 				23E59E8D2C3ACD1E00E5E39B /* OthersView.swift in Sources */,
+				3A64A6AE2C93076100E3992B /* ScoradScoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +396,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"itchLess/Preview Content\"";
+				DEVELOPMENT_TEAM = 85448T4J88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapView Needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -368,8 +426,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"itchLess/Preview Content\"";
+				DEVELOPMENT_TEAM = 85448T4J88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapView Needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -410,6 +470,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A64A6942C93036800E3992B /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A64A6952C93036800E3992B /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A64A6942C93036800E3992B /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23D974A92C377E01001270AE /* Project object */;
 }

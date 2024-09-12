@@ -16,6 +16,7 @@ struct itchLessApp: App {
             InitialView()
                 .environmentObject(scoreManager)
                 .environmentObject(checklistManager)
+                .environmentObject(ScoradManager()) 
         }
     }
 }

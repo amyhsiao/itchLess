@@ -152,8 +152,12 @@ struct OthersView: View {
                     // 四個按鈕
                     
                     HStack(){
-                        Image("診所地圖")
-                        Image("協會網站")
+                        NavigationLink(destination: MapView()){
+                            Image("診所地圖")
+                        }
+                        Image("協會網站").onTapGesture {
+                            openAssociationWebsite()
+                        }
                     }
                     //.offset(y: -75)
                     .padding(.top, -260)
@@ -216,6 +220,14 @@ struct OthersView: View {
             }
             .frame(maxWidth: .infinity)
         }
+    }
+}
+
+func openAssociationWebsite() {
+    if let url = URL(string: "https://adpa.org.tw/"), UIApplication.shared.canOpenURL(url) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    } else {
+        print("無法打開網站")
     }
 }
 
