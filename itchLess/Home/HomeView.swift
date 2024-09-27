@@ -148,7 +148,7 @@ struct HomeView: View {
                             {
                                 Image("home-chatbot")
                             }
-                            NavigationLink(destination: ClinicView())
+                            NavigationLink(destination: HomeViewThree())
                             {
                                 Image("home-environment")
                             }
