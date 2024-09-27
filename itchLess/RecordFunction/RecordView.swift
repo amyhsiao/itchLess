@@ -7,12 +7,17 @@
 
 import SwiftUI
 import SwiftUICharts
+import Charts
 
 struct RecordView: View {
     // 用於追蹤當前顯示的內容，預設顯示 "寶寶防守日記"
     @State private var showDefenseDiary = true
     @State var isShowingContact = false
     @EnvironmentObject var scoreManager: ScoradManager
+    
+    @State private var predictedDays: [[String: Any]] = [] // 用來存放伺服器返回的預測結果
+    @State private var errorMessage: String? // 用於顯示錯誤訊息
+    @State private var dayValues: [Double] = [30, 32, 38, 33, 43, 51, 48] // 預先填入的數值
     
     var body: some View {
         ScrollView{
@@ -154,6 +159,62 @@ struct RecordView: View {
                             .frame(maxWidth: 300, alignment: .leading)
                             .padding(.vertical,5)
                         
+                        // 發送請求按鈕
+                        Button(action: {
+                            scoreManager.sendDataToServerForPrediction()
+                        }) {
+                            Text("發送 SCORAD 資料並預測")
+                                .padding()
+                                .background(Color(hex:"8375DB"))
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .padding()
+
+
+                        if let errorMessage = scoreManager.errorMessage {
+                                        Text("Error: \(errorMessage)")
+                                            .foregroundColor(.red)
+                                    }
+
+                        if !scoreManager.predictedDays.isEmpty {
+                            let lastSevenDays = scoreManager.getLastSevenScoradValues()
+
+                            Chart {
+                                // 繪製 1-7 天的實際數據
+                                ForEach(Array(lastSevenDays.enumerated()), id: \.offset) { index, actualValue in
+                                    LineMark(
+                                        x: .value("Day", index + 1), // 將實際數據的天數從 1 開始
+                                        y: .value("SCORAD", actualValue)
+                                    )
+                                    .foregroundStyle(Color(hex:"F8A45B"))
+                                    .symbol(Circle())
+                                    .symbolSize(100)
+                                }
+
+                                // 繪製 8-14 天的預測數據
+                                ForEach(scoreManager.predictedDays, id: \.day) { prediction in
+                                    LineMark(
+                                        x: .value("Day", prediction.day),
+                                        y: .value("SCORAD", prediction.scorad)
+                                    )
+                                    .foregroundStyle(Color(hex:"F8A45B"))
+                                    .symbol(Circle())
+                                    .symbolSize(100)
+
+                                    AreaMark(
+                                        x: .value("Day", prediction.day),
+                                        yStart: .value("Lower Bound", prediction.q2_5),
+                                        yEnd: .value("Upper Bound", prediction.q97_5)
+                                    )
+                                    .foregroundStyle(Color.red.opacity(0.3)) // 用紅色繪製區域範圍
+                                }
+                            }
+                            .frame(height: 300)
+                            .padding()
+                        } else {
+                                       Text("")
+                                   }
                         
                     }   .background(Color(hex: "D8EAFF"))
                         .cornerRadius(10)
@@ -167,7 +228,7 @@ struct RecordView: View {
                             .foregroundColor(.black) // 數字顏色為白色
                             .frame(maxWidth: 300, alignment: .leading)
                             .padding(.top,10)
-                        Image("DotLine")    
+                        Image("DotLine")
                             .renderingMode(.template)  // 將圖片設置為模板模式，只會顯示形狀，不顯示原始顏色
                             .foregroundColor(.white)
                         VStack(spacing:0){
@@ -232,6 +293,19 @@ struct RecordView: View {
             }
             .animation(.spring(), value: isShowingContact)
     }
+    // 發送數據到伺服器
+    func sendTestData() {
+        ScoradPredictDataManager.shared.sendDataToServer(dayValues: dayValues) { result, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.errorMessage = error
+                } else if let result = result {
+                    self.predictedDays = result
+                    self.errorMessage = nil
+                }
+            }
+        }
+    }
 }
 
 extension Color {
@@ -261,5 +335,5 @@ extension Color {
 }
 
 #Preview {
-    RecordView()        .environmentObject(ScoradManager()) 
+    RecordView()        .environmentObject(ScoradManager())
 }
