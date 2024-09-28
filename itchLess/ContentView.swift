@@ -40,6 +40,7 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(ScoreManager())
+        .environmentObject(ScoradManager())
         .environmentObject(ChecklistManager())
 }
 
