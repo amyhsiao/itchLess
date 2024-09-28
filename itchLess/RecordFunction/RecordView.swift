@@ -171,39 +171,22 @@ struct RecordView: View {
                             
                             Image("DotLine")
                             
-                            LineView(data: scoradManager.records.map { $0.scorad }) // 使用 LineView 從假設的庫 , title: "POSCORAD", legend: "Trend"
-                                .frame(maxWidth: 300, maxHeight: 200)
-                            Rectangle()
-                                .fill(Color.clear) // 透明的背景
-                                .frame(width: 0.1, height: 290)
-                                .border(Color.black, width: 2) // 給透明方塊加上黑色邊框，便於觀察
-                                .background(Color.black.opacity(0)) // 可選：設置背景顏色，並調整透明度
+                            // Display chart only if there are records, otherwise show "No data recorded" message
+                            if !scoradManager.records.isEmpty {
+                                LineView(data: scoradManager.records.map { $0.scorad }) // 使用 LineView 從假設的庫 , title: "POSCORAD", legend: "Trend"
+                                    .frame(maxWidth: 300, maxHeight: 200)
+                                Rectangle()
+                                    .fill(Color.clear) // 透明的背景
+                                    .frame(width: 0.1, height: 290)
+                                    .border(Color.black, width: 2) // 給透明方塊加上黑色邊框，便於觀察
+                                    .background(Color.black.opacity(0)) // 可選：設置背景顏色，並調整透明度
+                            } else {
+                                Text("尚未有數據紀錄")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: 300, maxHeight: 200)
+                            }
                             
-                            //                        ScrollView{
-                            //                            VStack{
-                            //                                ForEach(scoradManager.records, id: \.date) { record in
-                            //                                    HStack {
-                            //                                        VStack(alignment: .leading) {
-                            //                                            Text("日期: \(record.date, formatter: dateFormatter)")
-                            //                                                .font(.system(size: 16))
-                            //                                                .foregroundColor(.gray)
-                            //                                            Text("SCORAD 指數: \(record.scorad, specifier: "%.2f")")
-                            //                                                .font(.system(size: 20))
-                            //                                                .fontWeight(.bold)
-                            //                                                .foregroundColor(.black)
-                            //                                        }
-                            //                                        Spacer()
-                            //                                        Image(systemName: "chart.bar.xaxis")
-                            //                                            .resizable()
-                            //                                            .scaledToFit()
-                            //                                            .frame(width: 40, height: 40)
-                            //                                            .foregroundColor(.blue)
-                            //                                    }
-                            //                                    .padding()
-                            //                                    .background(Color(hex: "F0F8FF"))
-                            //                                }
-                            //                            }.frame(height: 300)
-                            //                        }
                             Text("未來預測")
                                 .font(.system(size:20))
                                 .foregroundColor(.black) // 數字顏色為白色
@@ -329,9 +312,6 @@ struct RecordView: View {
                                 .padding(.horizontal)
                                 .padding(.vertical)
                             
-                            
-                            
-                            
                         }
                         .background(Color(hex: "FFAECD"))
                         .cornerRadius(10)
@@ -363,32 +343,6 @@ struct RecordView: View {
                 }
             }
         }
-    }
-}
-
-extension Color {
-    init(hex3: String) {
-        let hex = hex3.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
     }
 }
 
