@@ -52,13 +52,13 @@ struct StepOneView: View {
     var body: some View {
         VStack {
             Picker("Mode", selection: $selectedMode) {
-                Text("Adult").tag("Adult")
-                Text("Baby").tag("Baby")
+                Text("成人").tag("Adult")
+                Text("孩童").tag("Baby")
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            Button(showingFront ? "Show Back" : "Show Front") {
+            Button(showingFront ? "顯示背面觀" : "顯示前面觀") {
                 showingFront.toggle()
             }
             GeometryReader { geometry in
@@ -288,7 +288,7 @@ struct StepOneView: View {
             }
             HStack {
                 NavigationLink(destination: StepTwoView()) {
-                    Text("Next")
+                    Text("下一步")
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
@@ -297,7 +297,7 @@ struct StepOneView: View {
             }
         }
         .padding()
-        .navigationTitle("Step 1")
+        .navigationTitle("第一步：紀錄濕疹範圍")
         .navigationBarHidden(false)
     }
 }

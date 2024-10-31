@@ -47,12 +47,12 @@ struct StepTwoView: View {
     @EnvironmentObject var scoreManager : ScoradManager  // 創建一個新的ScoradManager實例
     
     let symptoms = [
-        Symptom(name: "症狀1", imageName: "SymptomPreview1"),
-        Symptom(name: "症狀2", imageName: "SymptomPreview2"),
-        Symptom(name: "症狀3", imageName: "SymptomPreview3"),
-        Symptom(name: "症狀4", imageName: "SymptomPreview4"),
-        Symptom(name: "症狀5", imageName: "SymptomPreview5"),
-        Symptom(name: "症狀6", imageName: "SymptomPreview6")
+        Symptom(name: "乾燥", imageName: "SymptomPreview1"),
+        Symptom(name: "紅疹", imageName: "SymptomPreview2"),
+        Symptom(name: "浮腫／丘疹", imageName: "SymptomPreview3"),
+        Symptom(name: "滲液／結痂", imageName: "SymptomPreview4"),
+        Symptom(name: "抓損", imageName: "SymptomPreview5"),
+        Symptom(name: "苔蘚化", imageName: "SymptomPreview6")
     ]
     
     @State private var selectedSymptom: Symptom?
@@ -60,7 +60,7 @@ struct StepTwoView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Enter Scores (0-3)")
+            Text("輸入對應病症嚴重程度（0-3）")
                 .font(.headline)
             
             
@@ -94,7 +94,7 @@ struct StepTwoView: View {
             
             
             NavigationLink(destination: StepThreeView()) {
-                Text("Next")
+                Text("下一步")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -102,7 +102,7 @@ struct StepTwoView: View {
             }
         }
         .padding()
-        .navigationTitle("Step 2")
+        .navigationTitle("第二步：症狀嚴重程度")
         .navigationBarHidden(false)
     }
 }
@@ -117,7 +117,7 @@ struct SymptomDetailSelectionView: View {
         (1...4).map { "\(symptom)_\($0)" }
     }
     
-    let captions = ["金", "木", "水", "火"]  // 圖片描述文字
+    let captions = ["0", "1", "2", "3"]  // 圖片描述文字
     
     @State private var selectedImageIndex: Int?
     

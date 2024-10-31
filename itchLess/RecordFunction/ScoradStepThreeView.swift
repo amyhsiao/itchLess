@@ -14,26 +14,78 @@ struct StepThreeView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Slider(value: $scoreManager.additionalInputs[0], in: 0.0...10.0, step: 0.1) {
-                Text("Select value (0-10)")
-            } minimumValueLabel: {
-                Text("0")
-            } maximumValueLabel: {
-                Text("10")
-            }
-            Text("Selected: \(scoreManager.additionalInputs[0], specifier: "%.1f")")
+//            Slider(value: $scoreManager.additionalInputs[0], in: 0.0...10.0, step: 0.1) {
+//                Text("Select value (0-10)")
+//            } minimumValueLabel: {
+//                Text("0")
+//            } maximumValueLabel: {
+//                Text("10")
+//            }
+//            Text("Selected: \(scoreManager.additionalInputs[0], specifier: "%.1f")")
+//            
+//            Slider(value: $scoreManager.additionalInputs[1], in: 0.0...10.0, step: 0.1) {
+//                Text("Select value (0-10)")
+//            } minimumValueLabel: {
+//                Text("0")
+//            } maximumValueLabel: {
+//                Text("10")
+//            }
+//            Text("Selected: \(scoreManager.additionalInputs[1], specifier: "%.1f")")
             
-            Slider(value: $scoreManager.additionalInputs[1], in: 0.0...10.0, step: 0.1) {
-                Text("Select value (0-10)")
-            } minimumValueLabel: {
-                Text("0")
-            } maximumValueLabel: {
-                Text("10")
-            }
-            Text("Selected: \(scoreManager.additionalInputs[1], specifier: "%.1f")")
+
+                // 瘙癢問題評估
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("瘙癢問題")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    Text("從無瘙癢問題到瘙癢難忍")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Slider(value: $scoreManager.additionalInputs[0], in: 0.0...10.0, step: 0.1) {
+                        Text("瘙癢問題自我評估")
+                    } minimumValueLabel: {
+                        Text("0").font(.caption)
+                    } maximumValueLabel: {
+                        Text("10").font(.caption)
+                    }
+                    
+                    Text("當前評分: \(scoreManager.additionalInputs[0], specifier: "%.1f")")
+                        .font(.footnote)
+                        .foregroundColor(.blue)
+                }
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(10)
+
+                // 睡眠問題評估
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("睡眠問題")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    Text("從無睡眠問題到完全失眠")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Slider(value: $scoreManager.additionalInputs[1], in: 0.0...10.0, step: 0.1) {
+                        Text("睡眠問題自我評估")
+                    } minimumValueLabel: {
+                        Text("0").font(.caption)
+                    } maximumValueLabel: {
+                        Text("10").font(.caption)
+                    }
+                    
+                    Text("當前評分: \(scoreManager.additionalInputs[1], specifier: "%.1f")")
+                        .font(.footnote)
+                        .foregroundColor(.blue)
+                }
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(10)
+
             
             HStack {
-                Button("Calculate") {
+                Button("計算分數") {
                     showScore = true
                 }
                 .padding()
@@ -42,13 +94,13 @@ struct StepThreeView: View {
                 .cornerRadius(10)
                 
                 if showScore {
-                    Text("Total Score: \(scoreManager.totalScore, specifier: "%.1f")")
+                    Text("總分: \(scoreManager.totalScore, specifier: "%.1f")")
                         .padding()
                         .background(Color.white)
                         .foregroundColor(.black)
                         .cornerRadius(10)
                 } else {
-                    Text("Uncalculated")
+                    Text("尚未計算")
                         .padding()
                         .background(Color.white)
                         .foregroundColor(.black)
@@ -56,7 +108,7 @@ struct StepThreeView: View {
                 }
             }
             HStack {
-                Button("Save and Exit") {
+                Button("保存並離開") {
                     scoreManager.addRecord()
                     scoreManager.resetData()  // 保存後重置數據
                     navigateBack = true  // 保存數據後設置導航條件
@@ -74,7 +126,7 @@ struct StepThreeView: View {
             }
         }
         .padding()
-        .navigationTitle("Final Step")
+        .navigationTitle("最後一步：主觀症狀")
         .navigationBarHidden(false)
     }
 }
