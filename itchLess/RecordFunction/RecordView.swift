@@ -21,6 +21,9 @@ struct RecordView: View {
     @State private var errorMessage: String? // 用於顯示錯誤訊息
     @State private var dayValues: [Double] = [30, 32, 38, 33, 43, 51, 48] // 預先填入的數值
     
+    @State private var topFeatureNames: [String] = ["", "", ""]
+    @State private var isMessageVisible: Bool = false
+    
     var body: some View {
         VStack{
             //Top Banner
@@ -271,46 +274,78 @@ struct RecordView: View {
                             Image("DotLine")
                                 .renderingMode(.template)  // 將圖片設置為模板模式，只會顯示形狀，不顯示原始顏色
                                 .foregroundColor(.white)
-                            VStack(spacing:0){
+                            VStack(spacing: 0) {
                                 Text("可能的惡化因子")
-                                    .font(.system(size:20))
-                                    .foregroundColor(.black) // 數字顏色為白色
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.black)
                                     .frame(maxWidth: 300, alignment: .leading)
-                                    .padding(.top,3)
-                                    .padding(.leading,4)
+                                    .padding(.top, 3)
+                                    .padding(.leading, 4)
+                                
+                                ForEach(0..<3, id: \.self) { index in
+                                    Text(topFeatureNames.indices.contains(index) ? "\(index + 1). \(topFeatureNames[index])" : "\(index + 1).")
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.black)
+                                        .frame(maxWidth: 300, alignment: .leading)
+                                        .padding(.vertical, 2)
+                                        .padding(.leading, 8)
+                                }
+                                
+                                Button(action: {
+                                    sendEnvironmentalPredictionRequest { modelPredictionData in
+                                        if let optimalModel = modelPredictionData.min(by: { $0.value.mse < $1.value.mse }) {
+                                            let sortedImportantFeatures = optimalModel.value.featureImportances
+                                                .sorted { $0.value > $1.value }
+                                                .prefix(3)
+                                                .map { $0.key }
+                                            self.topFeatureNames = sortedImportantFeatures
+                                        }
+                                        self.isMessageVisible = true
+                                    }
+                                }) {
+                                    Text("發送")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .frame(width: 80, height: 40)
+                                        .background(Color.blue)
+                                        .cornerRadius(8)
+                                        .padding(.top, 8)
+                                }
+
                                 Text("利用機器學習方式，找出近期造成皮膚惡化的因素")
-                                    .font(.system(size:10))
-                                    .foregroundColor(.black) // 數字顏色為白色
+                                    .font(.system(size: 10))
+                                    .foregroundColor(.black)
                                     .frame(maxWidth: 300, alignment: .leading)
-                                    .padding(.vertical,5)
-                                    .padding(.leading,4)
-                            }   .background(Color(hex: "FFFFFF"))
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                                .padding(.top)
-                            VStack(spacing:0){
-                                Text("過敏原檢測")
-                                    .font(.system(size:20))
-                                    .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
-                                    .padding(.top,3)
-                                    .padding(.leading,4)
-                                Text("過去在醫院的過敏原檢測，請拍照 我們將幫忙您和寶寶整理癢癢怪清單")
-                                    .font(.system(size:10))
-                                    .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
-                                    .padding(.vertical,5)
-                                    .padding(.leading,4)
-                                Text("過去紀錄")
-                                    .font(.system(size:20))
-                                    .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
-                                    .padding(.top,3)
-                                    .padding(.leading,4)
-                            }   .background(Color(hex: "FFFFFF"))
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                                .padding(.vertical)
+                                    .padding(.vertical, 5)
+                                    .padding(.leading, 4)
+                            }
+                            .background(Color(hex: "FFFFFF"))
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            .padding(.vertical)
+//                            VStack(spacing:0){
+//                                Text("過敏原檢測")
+//                                    .font(.system(size:20))
+//                                    .foregroundColor(.black) // 數字顏色為白色
+//                                    .frame(maxWidth: 300, alignment: .leading)
+//                                    .padding(.top,3)
+//                                    .padding(.leading,4)
+//                                Text("過去在醫院的過敏原檢測，請拍照 我們將幫忙您和寶寶整理癢癢怪清單")
+//                                    .font(.system(size:10))
+//                                    .foregroundColor(.black) // 數字顏色為白色
+//                                    .frame(maxWidth: 300, alignment: .leading)
+//                                    .padding(.vertical,5)
+//                                    .padding(.leading,4)
+//                                Text("過去紀錄")
+//                                    .font(.system(size:20))
+//                                    .foregroundColor(.black) // 數字顏色為白色
+//                                    .frame(maxWidth: 300, alignment: .leading)
+//                                    .padding(.top,3)
+//                                    .padding(.leading,4)
+//                            }   .background(Color(hex: "FFFFFF"))
+//                                .cornerRadius(10)
+//                                .padding(.horizontal)
+//                                .padding(.vertical)
                             
                         }
                         .background(Color(hex: "FFAECD"))
@@ -344,6 +379,55 @@ struct RecordView: View {
             }
         }
     }
+}
+
+struct PredictionModelResult: Decodable {
+    let mse: Double
+    let featureImportances: [String: Double]
+
+    enum CodingKeys: String, CodingKey {
+        case mse = "MSE"
+        case featureImportances = "Feature Importances"
+    }
+}
+
+func sendEnvironmentalPredictionRequest(completion: @escaping ([String: PredictionModelResult]) -> Void) {
+    let predictionURL = URL(string: "https://flask-enviromonitor-c6bc9e4fd03c.herokuapp.com/predict")!
+    var predictionRequest = URLRequest(url: predictionURL)
+    predictionRequest.httpMethod = "POST"
+    predictionRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    let environmentData = [
+        "環境溫度": [28.2, 30.7, 29.0, 26.5, 24.3, 31.1, 32.0, 27.8, 25.9, 29.4, 26.0, 28.6, 31.5, 24.1, 32.5, 29.9, 27.2, 23.4, 28.5, 25.2, 31.7, 27.3, 30.4, 32.8, 28.9, 30.2, 24.7, 27.6, 31.2, 29.1, 26.7, 28.3, 30.0, 24.5, 27.9, 25.4, 29.6, 30.9, 26.8, 28.0],
+        "環境溼度": [57.9, 61.8, 74.8, 69.3, 55.4, 60.2, 72.6, 58.1, 63.9, 55.0, 65.2, 57.0, 70.4, 52.9, 75.3, 59.8, 64.5, 71.1, 56.2, 73.5, 60.7, 68.6, 59.0, 54.7, 69.8, 72.0, 66.1, 54.3, 71.7, 60.0, 65.8, 59.4, 58.6, 68.2, 54.8, 63.5, 71.3, 57.6, 62.4, 69.9],
+        "空氣品質（AQI）": [129, 153, 66, 140, 98, 110, 115, 90, 180, 165, 130, 155, 70, 120, 160, 105, 135, 85, 175, 145, 100, 118, 112, 95, 170, 150, 125, 88, 180, 165, 130, 154, 75, 115, 160, 105, 138, 80, 170, 148],
+        "PM2.5濃度": [110, 77, 143, 100, 90, 120, 130, 85, 160, 150, 115, 78, 142, 105, 98, 123, 132, 80, 170, 148, 109, 76, 140, 101, 95, 119, 131, 86, 158, 152, 116, 79, 141, 104, 99, 121, 133, 81, 168, 149],
+        "Random Score": [88, 78, 89, 92, 77, 90, 85, 93, 87, 91, 82, 84, 94, 79, 95, 96, 81, 83, 97, 80, 98, 86, 100, 99, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61]
+    ]
+    
+    predictionRequest.httpBody = try! JSONSerialization.data(withJSONObject: environmentData, options: [])
+    
+    let predictionTask = URLSession.shared.dataTask(with: predictionRequest) { responseData, response, responseError in
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            print("Error with response: status code not 200")
+            return
+        }
+
+        guard let responseData = responseData, responseError == nil else {
+            print("Error: \(responseError?.localizedDescription ?? "No data")")
+            return
+        }
+
+        do {
+            let decodedResponse = try JSONDecoder().decode([String: PredictionModelResult].self, from: responseData)
+            DispatchQueue.main.async {
+                completion(decodedResponse)
+            }
+        } catch {
+            print("Error decoding JSON: \(error)")
+        }
+    }
+    predictionTask.resume()
 }
 
 #Preview {
