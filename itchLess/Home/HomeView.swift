@@ -144,7 +144,7 @@ struct HomeView: View {
                         //諮詢小怪&環境守護者
                         
                         HStack(){
-                            NavigationLink(destination: ClinicView())
+                            NavigationLink(destination: ChatView())
                             {
                                 Image("home-chatbot")
                             }

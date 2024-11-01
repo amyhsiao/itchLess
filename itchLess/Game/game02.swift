@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct game02 : View {
+    
+    @EnvironmentObject var scoreManager: ScoreManager
+    
+    
     // 狀態變量，用來控制不同元件的顯示和行為
     @State private var showOverlay = false // 控制第一個視窗的顯示狀態
     @State private var showGameIntro = false // 控制進入遊戲的視窗的顯示狀態
@@ -30,34 +34,67 @@ struct game02 : View {
         ZStack {
             // 主視圖背景
             VStack(spacing: 0) {
+                
                 // Top Banner
                 HStack {
-                    VStack(spacing: 5) {
-                        Text("Hi, 小明小朋友")
+                    Image("home-head-pic")
+                        .frame(alignment: .leading)
+                        .cornerRadius(8)
+                        .padding(.horizontal)
+                    
+                    VStack(spacing: 5){
+                        Text("Hi, 小明爸爸/媽媽")
                             .font(.system(size: 24))
                             .bold()
                             .frame(maxWidth: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                            .foregroundColor(Color(red: 0.424, green: 0.424, blue: 0.424))
-                        Text("一起來打倒癢癢怪吧")
+                            .foregroundColor(Color(red:0.424, green: 0.424, blue: 0.424))
+                        Text("今天天氣偏乾燥，要多多注意寶寶\n皮膚保濕哦～")
                             .font(.system(size: 14))
                             .frame(maxWidth: UIScreen.main.bounds.width * 0.65, alignment: .leading)
-                            .foregroundColor(Color(red: 0.424, green: 0.424, blue: 0.424))
+                            .foregroundColor(Color(red:0.424, green: 0.424, blue: 0.424))
+                        
                     }
                     .background(.white)
                     .cornerRadius(8)
-                    .offset(x: -20)
+                    .offset(x:-20)
+                    
+                    
+                    // points view
+                    
+                    ZStack(alignment: .bottom)
+                    {
+                        Image("home-bbdollars")
+                            .foregroundColor(.gray)
+                            .scaledToFit()
+                            .frame(width: 160, height: 160, alignment: .leading)
+                            .imageScale(.large)
+                            .padding(.horizontal, -45)
+                            .padding(.vertical, -50)
+                        
+                        // Button for testing
+                        Button(action: {
+                            //function for button: increase score
+                            scoreManager.resetScore()
+                        }) {
+                            Text("\(scoreManager.score)")
+                                .font(.title)
+                                .offset(x: -45, y: -5)
+                                .foregroundColor(Color(red:0.3, green: 0.3, blue: 0.3))
+                        }
+                    }
+                    .offset(x:20)
                 }
-                .padding(.vertical, -6)
-                .background(Color.white)
+                .padding(.bottom, -5)
+                .background (Color.white)
                 .frame(alignment: .leading)
                 
                 // Game Room
                 ZStack {
                     Image("截圖 2024-07-18 下午6.18.30 1")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+//                        .aspectRatio(contentMode: .fit)
                         .frame(width: 480, height: 633.97)
-                        .position(x: 196, y: 350)
+                        .position(x: 196, y: 330)
                     
                     if showDirtyBear {
                         Image("dirtybear")
@@ -163,14 +200,15 @@ struct game02 : View {
                                     .padding(.top, 20) // 調整文字和圖片之間的間距
                                     .transition(.opacity)
                                     .animation(.easeIn(duration: 2), value: showText) // 加入動畫
-                                    .position(x: 200, y: 150) // 調整文字位置
+                                    .position(x: 200, y: 100) // 調整文字位置
+                                
                             }
                         }
                     }
                 }
             }.onAppear {
                 // 3秒後顯示第一個視窗
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation {
                         showOverlay = true
                     }
@@ -179,8 +217,8 @@ struct game02 : View {
             
             // 第一個視窗，按鈕 A
             if showOverlay {
-                Color.black.opacity(0.6) // 背景變暗
-                    .edgesIgnoringSafeArea(.all)
+//                Color.black.opacity(0.6) // 背景變暗
+//                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     Image("遊戲頁面說明(入局說明) (2)") // 替換成你的圖片
@@ -189,6 +227,9 @@ struct game02 : View {
                         .frame(width: 400, height: 400)
                         .foregroundColor(.yellow)
                         .padding(.bottom, 50)
+                        .offset(y:50)
+//                        .padding(.top, 80)
+//                        .position(y: 330)
                     
                     Button(action: {
                         buttonAPressed = true // 設定 button_A 已按下
@@ -205,15 +246,17 @@ struct game02 : View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
+                            
                     }
+                    .offset(y:50)
                 }
                 .transition(.opacity) // 視窗的淡入淡出效果
             }
             
             // 第二個視窗，進入遊戲
             if showGameIntro {
-                Color.black.opacity(0.6)
-                    .edgesIgnoringSafeArea(.all)
+//                Color.black.opacity(0.6)
+//                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     Image("遊戲頁面說明(進入遊戲) ")
@@ -221,6 +264,7 @@ struct game02 : View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 400, height: 400)
                         .padding(.bottom, 50)
+                        .offset(y:50)
                     
                     Button(action: {
                         showGameIntro = false // 關閉視窗
@@ -230,7 +274,9 @@ struct game02 : View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
+                            
                     }
+                    .offset(y:50)
                 }
                 .transition(.opacity)
             }
@@ -250,13 +296,14 @@ struct game02 : View {
                             .background(Color.red)
                             .cornerRadius(8)
                     }
+                    .offset(y:50)
                 }
             }
             
             // 結束遊戲視窗
             if showEndGame {
-                Color.black.opacity(0.6)
-                    .edgesIgnoringSafeArea(.all)
+//                Color.black.opacity(0.6)
+//                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     Image("遊戲頁面說明(任務完成)") // 替換成你想要顯示的圖片名稱
@@ -264,6 +311,7 @@ struct game02 : View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 400, height: 400)
                         .padding(.bottom, 50)
+                        .offset(y:50)
                     
                     Button(action: {
                         withAnimation(nil) { // 禁用動畫
@@ -276,34 +324,47 @@ struct game02 : View {
                             .padding()
                             .background(Color.white)
                             .cornerRadius(8)
+                            
                     }
+                        .offset(y:50)
                 }
-                
-               
                 
                 
             }
-                
-        }
-        .fullScreenCover(isPresented: $showEndGameInfo) {
-            EndGameInfo()
             
+            if showEndGameInfo{
+                Image("cleanroom")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 480, height: 633.97)
+                    .position(x: 196, y: 390)
+            }
+                
         }
+        
+        
+//        .fullScreenCover(isPresented: $showEndGameInfo) {
+////            EndGameInfo()
+//            Image("cleanroom")
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 480, height: 633.97)
+//                .position(x: 196, y: 350)
+//        }
     }
-        // 檢查所有物品是否已經消失
-        private func checkAllItemsDisappeared() {
-            if !showDirtyBear && !showDirtyClothes && !showDirtyDot {
-                withAnimation {
-                    showMonster = true
-                }
+        
+    
+    // 檢查所有物品是否已經消失
+    private func checkAllItemsDisappeared() {
+        if !showDirtyBear && !showDirtyClothes && !showDirtyDot {
+            withAnimation {
+                showMonster = true
             }
         }
     }
+}
     
-struct game02_Previews: PreviewProvider {
-    static var previews: some View {
-            game02()
-        }
-    }
-    
-
+#Preview {
+    game02()
+        .environmentObject(ScoreManager())
+}

@@ -23,7 +23,7 @@ struct ContentView: View {
                     Image("ic-record")
                 }
             
-            MonsterView()
+            game02()
                 .tabItem {
                     Image("ic-game")
                 }

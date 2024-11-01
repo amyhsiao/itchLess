@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23B8C04B2C46961200287BDF /* SceneA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C04A2C46961200287BDF /* SceneA.swift */; };
-		23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C04C2C46961F00287BDF /* GameScene.swift */; };
+		2395C4422CD47B2500548D62 /* EndGameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395C4402CD47B2500548D62 /* EndGameInfo.swift */; };
+		2395C4432CD47B2500548D62 /* game02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2395C4412CD47B2500548D62 /* game02.swift */; };
 		23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C0522C47BC9600287BDF /* ChatView.swift */; };
 		23B8C0572C48B47D00287BDF /* TodoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C0562C48B47D00287BDF /* TodoCardView.swift */; };
 		23D974B52C377E01001270AE /* itchLessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D974B42C377E01001270AE /* itchLessApp.swift */; };
 		23D974B72C377E01001270AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D974B62C377E01001270AE /* ContentView.swift */; };
 		23D974B92C377E04001270AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D974B82C377E04001270AE /* Assets.xcassets */; };
 		23D974BC2C377E04001270AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D974BB2C377E04001270AE /* Preview Assets.xcassets */; };
-		23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E882C3ACC6400E5E39B /* MonsterView.swift */; };
 		23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */; };
 		23E59E8D2C3ACD1E00E5E39B /* OthersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */; };
 		23EF22DA2C59EFAA0041D6C5 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF22D92C59EFAA0041D6C5 /* InitialView.swift */; };
@@ -50,8 +49,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23B8C04A2C46961200287BDF /* SceneA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneA.swift; sourceTree = "<group>"; };
-		23B8C04C2C46961F00287BDF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		2395C4402CD47B2500548D62 /* EndGameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameInfo.swift; sourceTree = "<group>"; };
+		2395C4412CD47B2500548D62 /* game02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = game02.swift; sourceTree = "<group>"; };
 		23B8C0522C47BC9600287BDF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		23B8C0562C48B47D00287BDF /* TodoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCardView.swift; sourceTree = "<group>"; };
 		23D974B12C377E01001270AE /* itchLess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itchLess.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +58,6 @@
 		23D974B62C377E01001270AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		23D974B82C377E04001270AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D974BB2C377E04001270AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		23E59E882C3ACC6400E5E39B /* MonsterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterView.swift; sourceTree = "<group>"; };
 		23E59E8A2C3ACD0C00E5E39B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersView.swift; sourceTree = "<group>"; };
 		23EF22D92C59EFAA0041D6C5 /* InitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -104,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2395C4442CD47B2A00548D62 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2395C4402CD47B2500548D62 /* EndGameInfo.swift */,
+				2395C4412CD47B2500548D62 /* game02.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		23D974A82C377E01001270AE = {
 			isa = PBXGroup;
 			children = (
@@ -123,18 +130,16 @@
 		23D974B32C377E01001270AE /* itchLess */ = {
 			isa = PBXGroup;
 			children = (
+				2395C4442CD47B2A00548D62 /* Game */,
 				23D974B42C377E01001270AE /* itchLessApp.swift */,
 				23D974B62C377E01001270AE /* ContentView.swift */,
 				23FE85922C808B28000285CA /* ChecklistManager.swift */,
 				23EF22D92C59EFAA0041D6C5 /* InitialView.swift */,
 				23EF22DD2C5B2CCF0041D6C5 /* Home */,
-				23E59E882C3ACC6400E5E39B /* MonsterView.swift */,
 				3A64A6892C93030B00E3992B /* RecordFunction */,
 				3A51B9332CA6B15F0076DF51 /* AQI Function */,
 				3A51B9372CA6B15F0076DF51 /* ESP32 */,
 				3A51B93C2CA6B15F0076DF51 /* WeatherFunctionTest */,
-				23B8C04C2C46961F00287BDF /* GameScene.swift */,
-				23B8C04A2C46961200287BDF /* SceneA.swift */,
 				23E59E8C2C3ACD1E00E5E39B /* OthersView.swift */,
 				23EF22E02C5B5C410041D6C5 /* ScoreManager.swift */,
 				23D974B82C377E04001270AE /* Assets.xcassets */,
@@ -305,7 +310,7 @@
 				23D974B72C377E01001270AE /* ContentView.swift in Sources */,
 				23EF22DC2C59FAC30041D6C5 /* ClinicView.swift in Sources */,
 				23FE85952C8091CA000285CA /* EditTodo.swift in Sources */,
-				23B8C04D2C46961F00287BDF /* GameScene.swift in Sources */,
+				2395C4432CD47B2500548D62 /* game02.swift in Sources */,
 				3A51B93E2CA6B15F0076DF51 /* AQIFunctionModel.swift in Sources */,
 				3A51B9442CA6B15F0076DF51 /* APIservise.swift in Sources */,
 				23FE85992C82E5DF000285CA /* FilteredChecklistView.swift in Sources */,
@@ -316,7 +321,6 @@
 				23EF22E12C5B5C410041D6C5 /* ScoreManager.swift in Sources */,
 				23EF22DF2C5B2D410041D6C5 /* ReminderView.swift in Sources */,
 				3AC1F8442C8FEF580051C78D /* MapData.swift in Sources */,
-				23B8C04B2C46961200287BDF /* SceneA.swift in Sources */,
 				3A51B9402CA6B15F0076DF51 /* LocationViewModel.swift in Sources */,
 				3A51B9412CA6B15F0076DF51 /* ESP32Function.swift in Sources */,
 				23B8C0532C47BC9600287BDF /* ChatView.swift in Sources */,
@@ -326,7 +330,7 @@
 				3A51B93D2CA6B15F0076DF51 /* AQICountryData.swift in Sources */,
 				23E59E8B2C3ACD0C00E5E39B /* HomeView.swift in Sources */,
 				3A64A6AF2C93076100E3992B /* ScoradStepOneView.swift in Sources */,
-				23E59E892C3ACC6400E5E39B /* MonsterView.swift in Sources */,
+				2395C4422CD47B2500548D62 /* EndGameInfo.swift in Sources */,
 				3A51B9452CA6B15F0076DF51 /* Model.swift in Sources */,
 				3AC1F8422C8FEF180051C78D /* MapView.swift in Sources */,
 				3A64A6A72C93075800E3992B /* RecordEntranceView.swift in Sources */,
@@ -468,7 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"itchLess/Preview Content\"";
-				DEVELOPMENT_TEAM = 85448T4J88;
+				DEVELOPMENT_TEAM = 6J89574TD9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapView Needed";
@@ -483,7 +487,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SilentClork.itchLess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aiADcsmu.itchLess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -499,7 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"itchLess/Preview Content\"";
-				DEVELOPMENT_TEAM = 85448T4J88;
+				DEVELOPMENT_TEAM = 6J89574TD9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MapView Needed";
@@ -514,7 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SilentClork.itchLess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aiADcsmu.itchLess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
