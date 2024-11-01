@@ -181,16 +181,16 @@ struct ChatView: View {
         showInputField = false // 隱藏輸入匡
 
         // First API call
-        fetchData(url: "http://192.168.0.73:3000/api/chat/symptom", userInput: userInput) { response in
+        fetchData(url: "https://cryptic-oasis-10705-f08b993ae693.herokuapp.com/api/chat/symptom", userInput: userInput) { response in
             doctorText = response ?? "發生錯誤，請稍後再試"
             
             // Second API call
-            fetchData(url: "http://192.168.0.73:3000/api/chat/synopsis", userInput: userInput) { synopsis in
+            fetchData(url: "https://cryptic-oasis-10705-f08b993ae693.herokuapp.com/api/chat/synopsis", userInput: userInput) { synopsis in
                 outputText = synopsis ?? "無法取得摘要"
                 
                 // Third API call
                 if let synopsisMessage = synopsis {
-                    fetchData(url: "http://192.168.0.73:3000/api/chat/synopsis_title", userInput: synopsisMessage) { title in
+                    fetchData(url: "https://cryptic-oasis-10705-f08b993ae693.herokuapp.com/api/chat/synopsis_title", userInput: synopsisMessage) { title in
                         outputTitle = title ?? "無法取得標題"
                         showViewPitchButton = true
                         isLoading = false

@@ -180,7 +180,7 @@ struct RecordView: View {
                                 // Display chart only if there are records, otherwise show "No data recorded" message
                                 if !scoradManager.records.isEmpty {
                                     LineView(data: scoradManager.records.map { $0.scorad }) // 使用 LineView 從假設的庫 , title: "POSCORAD", legend: "Trend"
-                                        .frame(maxWidth: 300, maxHeight: 200)
+                                        .frame(maxWidth: 340, maxHeight: 200)
                                     Rectangle()
                                         .fill(Color.clear) // 透明的背景
                                         .frame(width: 0.1, height: 290)
@@ -190,7 +190,7 @@ struct RecordView: View {
                                     Text("尚未有數據紀錄")
                                         .font(.system(size: 20))
                                         .foregroundColor(.gray)
-                                        .frame(maxWidth: 300, maxHeight: 200)
+                                        .frame(maxWidth: 340, maxHeight: 200)
                                 }
                                 
                                 Text("未來預測")
@@ -256,7 +256,7 @@ struct RecordView: View {
                                             .foregroundStyle(Color.red.opacity(0.3)) // 用紅色繪製區域範圍
                                         }
                                     }
-                                    .frame(height: 300)
+                                    .frame(height: 340)
                                     .padding()
                                 } else {
                                     Text("")
@@ -273,7 +273,7 @@ struct RecordView: View {
                                 Text("癢癢怪各方威脅")
                                     .font(.system(size:20))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.top,10)
                                 Image("DotLine")
                                     .renderingMode(.template)  // 將圖片設置為模板模式，只會顯示形狀，不顯示原始顏色
@@ -282,7 +282,7 @@ struct RecordView: View {
                                     Text("可能的惡化因子")
                                         .font(.system(size: 20))
                                         .foregroundColor(.black)
-                                        .frame(maxWidth: 300, alignment: .leading)
+                                        .frame(maxWidth: 340, alignment: .leading)
                                         .padding(.top, 3)
                                         .padding(.leading, 4)
                                     
@@ -290,7 +290,7 @@ struct RecordView: View {
                                         Text(topFeatureNames.indices.contains(index) ? "\(index + 1). \(topFeatureNames[index])" : "\(index + 1).")
                                             .font(.system(size: 16))
                                             .foregroundColor(.black)
-                                            .frame(maxWidth: 300, alignment: .leading)
+                                            .frame(maxWidth: 340, alignment: .leading)
                                             .padding(.vertical, 2)
                                             .padding(.leading, 8)
                                     }
@@ -319,7 +319,7 @@ struct RecordView: View {
                                     Text("利用機器學習方式，找出近期造成皮膚惡化的因素")
                                         .font(.system(size: 10))
                                         .foregroundColor(.black)
-                                        .frame(maxWidth: 300, alignment: .leading)
+                                        .frame(maxWidth: 340, alignment: .leading)
                                         .padding(.vertical, 5)
                                         .padding(.leading, 4)
                                 }
