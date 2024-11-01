@@ -85,27 +85,27 @@ struct RecordView: View {
                     VStack{
                         HStack{
                             Text("寶寶\n防守日記")
-                                .padding(.horizontal,25)
+                                .padding(.horizontal,40)
                                 .padding(.vertical,20)
                                 .background(Color(hex: "A1CDFE"))
                                 .cornerRadius(10)
                                 .foregroundColor(.black)
                                 .font(.system(size:25))
                                 .multilineTextAlignment(.center)
-                                .padding(.leading,10)
+                                .padding(.leading,5)
                                 .onTapGesture {
                                     // 點按時顯示 "寶寶防守日記"
                                     showDefenseDiary = true
                                 }
                             Text("癢癢怪\n各方威脅")
-                                .padding(.horizontal,25)
+                                .padding(.horizontal,40)
                                 .padding(.vertical,20)
                                 .background(Color(hex: "FF3381"))
                                 .cornerRadius(10)
                                 .foregroundColor(.white)
                                 .font(.system(size:25))
                                 .multilineTextAlignment(.center)
-                                .padding(.trailing,10)
+                                .padding(.trailing,5)
                                 .onTapGesture {
                                     // 點按時顯示 "癢癢怪各方威脅"
                                     showDefenseDiary = false
@@ -119,9 +119,10 @@ struct RecordView: View {
                                 Text("寶寶防守日記")
                                     .font(.system(size:20))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.top,10)
                                 Image("DotLine")
+                                    .padding(.horizontal)
                                 
                                 HStack {
                                     Image("RecordButtonPNG")
@@ -165,15 +166,16 @@ struct RecordView: View {
                                 Text("記錄曲線")
                                     .font(.system(size:20))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.top,10)
                                 Text("可點擊天數，得知當天的指數數值、照片、紀錄文字")
                                     .font(.system(size:10))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.vertical,5)
                                 
                                 Image("DotLine")
+                                    .padding(.horizontal)
                                 
                                 // Display chart only if there are records, otherwise show "No data recorded" message
                                 if !scoradManager.records.isEmpty {
@@ -194,13 +196,13 @@ struct RecordView: View {
                                 Text("未來預測")
                                     .font(.system(size:20))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.top,10)
                                 Image("DotLine")
                                 Text("經由過去幾天的po-scorad指數數值，來看看未來的病情吧～ 小小提醒：診斷與治療請諮詢專業醫師，此數值僅供參考")
                                     .font(.system(size:10))
                                     .foregroundColor(.black) // 數字顏色為白色
-                                    .frame(maxWidth: 300, alignment: .leading)
+                                    .frame(maxWidth: 340, alignment: .leading)
                                     .padding(.vertical,5)
                                 
                                 // 發送請求按鈕
@@ -262,7 +264,8 @@ struct RecordView: View {
                                 
                             }   .background(Color(hex: "D8EAFF"))
                                 .cornerRadius(10)
-                                .padding(.horizontal,20)
+                                .padding(.horizontal,10)
+                                
                         }
                         //MARK: 癢癢怪各方威脅
                         else {
