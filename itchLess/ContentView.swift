@@ -33,6 +33,8 @@ struct ContentView: View {
                     Image("ic-list")
                 }
         }
+//        .toolbarBackground(.visible, for: .tabBar)
+//        .toolbarBackground(.red, for: .tabBar)
         
     }
 }

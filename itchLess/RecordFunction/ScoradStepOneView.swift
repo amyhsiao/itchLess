@@ -56,11 +56,13 @@ struct StepOneView: View {
                 Text("孩童").tag("Baby")
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding(.horizontal)
+            
             
             Button(showingFront ? "顯示背面觀" : "顯示前面觀") {
                 showingFront.toggle()
             }
+            
             GeometryReader { geometry in
                 ZStack {
                     if selectedMode == "Adult" {

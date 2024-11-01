@@ -18,59 +18,69 @@ struct RecordEntranceView: View {
     @State private var alertMessage = ""
 
     var body: some View {
-        NavigationStack{
+        VStack{
             VStack{
-                VStack{
-                    Text("紀錄每一天")
-                        .font(.system(size:30))
-                        .foregroundColor(.black) // 數字顏色為白色
-                        .frame(maxWidth: 300, alignment: .leading)
-                        .padding(.top,10)
-                    //                Image("進入檢測")
-                    //                    .resizable().aspectRatio(contentMode: .fit)
-                    //                    .padding()
-                    NavigationLink(value: "SecondView") {
-                        Image("進入檢測")
-                            .resizable().aspectRatio(contentMode: .fit)
-                            .padding()
-                    }
-                    
-                    HStack{
-                        Image("照片紀錄")
-                            .resizable().aspectRatio(contentMode: .fit)
-                            .onTapGesture {
-                                isCameraImagePickerShown = true
-                            }.sheet(isPresented: $isCameraImagePickerShown) {
-                                CameraImagePicker(image: $image, isSaved: $isCameraImageSaved, showAlert: $showAlert, alertMessage: $alertMessage)
-                            }
-                        
-                        Image("文字紀錄")
-                            .resizable().aspectRatio(contentMode: .fit)
-                        
-                    }
-                }            .navigationDestination(for: String.self) { value in
-                    switch value {
-                    case "SecondView":
-                        StepOneView()
-                    default:
-                        EmptyView()
-                    }
+                Text("紀錄每一天")
+                    .font(.system(size:30))
+                    .foregroundColor(.black) // 數字顏色為白色
+                    .frame(maxWidth: 300, alignment: .leading)
+                    .padding(.top,10)
+                //                Image("進入檢測")
+                //                    .resizable().aspectRatio(contentMode: .fit)
+                //                    .padding()
+                NavigationLink(value: "SecondView") {
+                    Image("進入檢測")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .padding()
                 }
-                .navigationTitle("Home")
-                .navigationBarHidden(true)
-                Text("取消")
-                    .font(.title3)
-                    .foregroundColor(.secondary)
-                    .onTapGesture{
-                        isShowing = false
-                    }
+//                    
+//                    Button(action: {
+//                        //function for button: increase score
+//                        scoreManager.resetScore()
+//                    }) {
+//                        Text("\(scoreManager.score)")
+//                            .font(.title)
+//                            .offset(x: -45, y: -5)
+//                            .foregroundColor(Color(red:0.3, green: 0.3, blue: 0.3))
+//                    }
+                
+                HStack{
+                    Image("照片紀錄")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .onTapGesture {
+                            isCameraImagePickerShown = true
+                        }.sheet(isPresented: $isCameraImagePickerShown) {
+                            CameraImagePicker(image: $image, isSaved: $isCameraImageSaved, showAlert: $showAlert, alertMessage: $alertMessage)
+                        }
+                    
+                    Image("文字紀錄")
+                        .resizable().aspectRatio(contentMode: .fit)
+                    
+                }
+            }            
+            .navigationDestination(for: String.self) { value in
+                switch value {
+                case "SecondView":
+                    StepOneView()
+                default:
+                    EmptyView()
+                }
             }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 20).foregroundColor(Color(hex2:"FFD2AB")))
-            .padding()
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("保存結果"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
+            .navigationTitle("Home")
+            .navigationBarHidden(true)
+            Text("取消")
+                .font(.title3)
+                .foregroundColor(.secondary)
+                .onTapGesture{
+                    isShowing = false
+                }
+        }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: 20).foregroundColor(Color(hex2:"FFD2AB")))
+        .padding()
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("保存結果"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        
         }
     }
 }

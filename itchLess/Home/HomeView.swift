@@ -104,7 +104,7 @@ struct HomeView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)
                                 .font(.system(size: 18))
-                            NavigationLink(destination: ReminderView())
+                            NavigationLink(destination: EmptyView())
                             {
                                 Text("See all")
                                     .foregroundColor(Color(red:0.964, green: 0.652, blue: 0.728))
@@ -167,7 +167,7 @@ struct HomeView: View {
                                 .padding(.horizontal)
                                 .font(.system(size: 18))
                                 .offset(y: 5)
-                            NavigationLink(destination: ReminderView())
+                            NavigationLink(destination: EmptyView())
                             {
                                 Text("See all")
                                     .foregroundColor(Color(red:0.964, green: 0.652, blue: 0.728))
@@ -285,15 +285,19 @@ struct HomeView: View {
                     .padding()
                 }
                 .blur(radius: firstTimePopup ? 3 : 0)
-                
-                if firstTimePopup{
-                    Color.black.opacity(0.4) // Background dimming
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            firstTimePopup = false // Dismiss on tap outside
+                .overlay(alignment: .top){
+                    Group{
+                        if (firstTimePopup){
+                            Color.black.opacity(0.4) // Background dimming
+                                .edgesIgnoringSafeArea(.all)
+                                .onTapGesture {
+                                    firstTimePopup = false // Dismiss on tap outside
+                                }
+                            Image("home-firstTime")
                         }
-                    Image("home-firstTime")
+                    }
                 }
+
                 
             }
         }
