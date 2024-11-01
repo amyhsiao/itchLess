@@ -138,8 +138,14 @@ struct OthersView: View {
                             .scaledToFit()
                         //.padding(.horizontal)
                         VStack(){
-                            Image("常見問題")
-                            Image("我想問")
+                            NavigationLink(destination: EmptyView())
+                            {
+                                Image("常見問題")
+                            }
+                            NavigationLink(destination: ChatView())
+                            {
+                                Image("我想問")
+                            }
                         }
                         .padding(.trailing, 30)
                     }
