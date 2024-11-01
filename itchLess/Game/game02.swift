@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+class GameSceneManager: ObservableObject {
+    @Published var showAR = false
+    @Published var showEnd = false
+    @Published var back = false
+}
+
 struct game02 : View {
     
     @EnvironmentObject var scoreManager: ScoreManager
@@ -29,6 +35,11 @@ struct game02 : View {
     @State private var monsterScale: CGFloat = 0.1 // 初始化縮放比例
     @State private var monsterRotation: Double = 0 // 初始化旋轉角度
     @State private var showText = false
+    
+    @State private var isShowingEducation = false  // 控制教育視圖的顯示
+    @State private var modelLimit: Int = 1
+    @State private var navigateToAR = false
+    @StateObject private var gamesceneManager = GameSceneManager()
     
     var body: some View {
         ZStack {
@@ -208,7 +219,7 @@ struct game02 : View {
                 }
             }.onAppear {
                 // 3秒後顯示第一個視窗
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation {
                         showOverlay = true
                     }
@@ -266,42 +277,79 @@ struct game02 : View {
                         .padding(.bottom, 50)
                         .offset(y:50)
                     
-                    Button(action: {
-                        showGameIntro = false // 關閉視窗
-                        showBlankView = true // 顯示空白視窗
-                    }) {
-                        Text("進入遊戲")
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            
+                    Button("進入遊戲") {
+                        print("Start 按鈕被點擊")
+                        showGameIntro = false
+                        //navigateToAR = true
+//                            showBlankView = true
+                        gamesceneManager.showAR = true
+//                            showEndGameInfo = true
+                        print("showAR = True")
+
+                        print("navigateToAR 狀態設為 true")
+                        print(gamesceneManager.showAR)
+                        print(gamesceneManager.showEnd)
+                        print(gamesceneManager.back)
                     }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .foregroundColor(.black)
                     .offset(y:50)
                 }
                 .transition(.opacity)
             }
             
-            // 空白視窗
-            if showBlankView {
-                Color.white
-                    .edgesIgnoringSafeArea(.all)
+            if gamesceneManager.back && !gamesceneManager.showEnd {
+//                Color.black.opacity(0.6)
+//                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Button(action: {
-                        showBlankView = false // 隱藏空白視窗
-                        showEndGame = true // 顯示結束遊戲視窗
-                    }) {
-                        Text("結束遊戲")
-                            .padding()
-                            .background(Color.red)
-                            .cornerRadius(8)
+                    Image("遊戲頁面說明(進入遊戲) ")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 400, height: 400)
+                        .padding(.bottom, 50)
+                        .offset(y:50)
+                    
+                    Button("進入遊戲") {
+                        showGameIntro = false
+                        //navigateToAR = true
+//                            showBlankView = true
+                        gamesceneManager.showAR = true
+//                            showEndGameInfo = true
                     }
+//                    .offset(y:50)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .foregroundColor(.black)
                     .offset(y:50)
                 }
+                .transition(.opacity)
             }
+//            
+//            // 空白視窗
+//            if showBlankView {
+//                Color.white
+//                    .edgesIgnoringSafeArea(.all)
+//                
+//                VStack {
+//                    Button(action: {
+//                        showBlankView = false // 隱藏空白視窗
+//                        showEndGame = true // 顯示結束遊戲視窗
+//                    }) {
+//                        Text("結束遊戲")
+//                            .padding()
+//                            .background(Color.red)
+//                            .cornerRadius(8)
+//                    }
+//                    .offset(y:50)
+//                }
+//            }
             
             // 結束遊戲視窗
-            if showEndGame {
+            if gamesceneManager.showEnd {
 //                Color.black.opacity(0.6)
 //                    .edgesIgnoringSafeArea(.all)
                 
@@ -342,15 +390,15 @@ struct game02 : View {
                 
         }
         
-        
-//        .fullScreenCover(isPresented: $showEndGameInfo) {
-////            EndGameInfo()
-//            Image("cleanroom")
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 480, height: 633.97)
-//                .position(x: 196, y: 350)
-//        }
+        .fullScreenCover(isPresented: $gamesceneManager.showAR) {
+            ARObjectEnterView(gamesceneManager: gamesceneManager)
+                .onChange(of: gamesceneManager.showAR) { newValue in
+                        if !newValue {
+                            // This will trigger the dismiss
+                            gamesceneManager.showAR = false
+                        }
+                    }
+        }
     }
         
     
