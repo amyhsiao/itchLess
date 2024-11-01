@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StepOneView: View {
     @EnvironmentObject var scoreManager : ScoradManager  // 創建一個新的ScoradManager實例
+    @Binding var isShowing : Bool
     @State private var isHeadSelected = false
     @State private var isMainBodySelected = false
     @State private var isRightHandSelected = false
@@ -289,7 +290,7 @@ struct StepOneView: View {
                 }
             }
             HStack {
-                NavigationLink(destination: StepTwoView()) {
+                NavigationLink(destination: StepTwoView(isShowing: $isShowing)) {
                     Text("下一步")
                         .padding()
                         .background(Color.blue)

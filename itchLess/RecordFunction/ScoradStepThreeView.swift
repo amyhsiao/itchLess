@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StepThreeView: View {
     @EnvironmentObject var scoreManager : ScoradManager  // 創建一個新的ScoradManager實例
+    @Binding var isShowing : Bool
     @State private var showScore = false
     @State private var navigateBack = false  // 控制導航的狀態
     
@@ -112,6 +113,8 @@ struct StepThreeView: View {
                     scoreManager.addRecord()
                     scoreManager.resetData()  // 保存後重置數據
                     navigateBack = true  // 保存數據後設置導航條件
+                    isShowing.toggle()
+                    print(isShowing)
                 }
                 .padding()
                 .background(Color.green)
@@ -122,7 +125,8 @@ struct StepThreeView: View {
                 //                NavigationLink(destination: ContentView(), isActive: $navigateBack) {
                 //                    EmptyView()
             }.navigationDestination(isPresented: $navigateBack) {
-                RecordView()
+                RecordView(isShowing: $isShowing)
+                    .navigationBarHidden(true)
             }
         }
         .padding()

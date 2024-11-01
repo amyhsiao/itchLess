@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var checklistManager: ChecklistManager
     @EnvironmentObject var scoreManager: ScoreManager
-    
+    @State private var isShowingContact : Bool = false
+
     var body: some View {
         TabView{
             HomeView()
@@ -18,7 +19,7 @@ struct ContentView: View {
                     Image("ic-house")
                 }
             
-            RecordView()
+            RecordView(isShowing: $isShowingContact)
                 .tabItem {
                     Image("ic-record")
                 }

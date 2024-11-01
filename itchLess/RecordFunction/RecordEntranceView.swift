@@ -61,7 +61,7 @@ struct RecordEntranceView: View {
             .navigationDestination(for: String.self) { value in
                 switch value {
                 case "SecondView":
-                    StepOneView()
+                    StepOneView(isShowing: $isShowing)
                 default:
                     EmptyView()
                 }

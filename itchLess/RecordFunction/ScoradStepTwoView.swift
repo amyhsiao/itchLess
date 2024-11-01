@@ -45,6 +45,7 @@ struct Symptom: Identifiable, Equatable {
 
 struct StepTwoView: View {
     @EnvironmentObject var scoreManager : ScoradManager  // 創建一個新的ScoradManager實例
+    @Binding var isShowing : Bool
     
     let symptoms = [
         Symptom(name: "乾燥", imageName: "SymptomPreview1"),
@@ -93,7 +94,7 @@ struct StepTwoView: View {
             }
             
             
-            NavigationLink(destination: StepThreeView()) {
+            NavigationLink(destination: StepThreeView(isShowing: $isShowing)) {
                 Text("下一步")
                     .padding()
                     .background(Color.blue)

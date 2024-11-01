@@ -12,10 +12,13 @@ import Charts
 struct RecordView: View {
     // 用於追蹤當前顯示的內容，預設顯示 "寶寶防守日記"
     @State private var showDefenseDiary = true
-    @State var isShowingContact = false
+    @Binding var isShowing : Bool
     @EnvironmentObject var scoradManager: ScoradManager
     @EnvironmentObject var scoreManager: ScoreManager
 
+    init(isShowing: Binding<Bool>) {
+        self._isShowing = isShowing
+    }
     
     @State private var predictedDays: [[String: Any]] = [] // 用來存放伺服器返回的預測結果
     @State private var errorMessage: String? // 用於顯示錯誤訊息
@@ -127,7 +130,7 @@ struct RecordView: View {
                                 HStack {
                                     Image("RecordButtonPNG")
                                         .onTapGesture {
-                                            isShowingContact = true
+                                            isShowing.toggle()
                                         }
                                     
                                     VStack {
@@ -359,17 +362,17 @@ struct RecordView: View {
                 }
                 .frame(maxWidth: 400)
                 /*            .background(Color(hex: "F5F5F5"))  */
-                    .overlay(Color.black.opacity(isShowingContact ? 0.5 : 0))
+                    .overlay(Color.black.opacity(isShowing ? 0.5 : 0))
                     .overlay(alignment: .top){
                         Group{
-                            if (isShowingContact){
-                                RecordEntranceView(isShowing: $isShowingContact)
+                            if (isShowing){
+                                RecordEntranceView(isShowing: $isShowing)
                                 //                            .offset(y: UIScreen.main.bounds.maxY * 0.1)
                                     .transition(.slide)
                             }
                         }
                     }
-                    .animation(.spring(), value: isShowingContact)
+                    .animation(.spring(), value: isShowing)
             }
         }
     }
@@ -437,8 +440,4 @@ func sendEnvironmentalPredictionRequest(completion: @escaping ([String: Predicti
     predictionTask.resume()
 }
 
-#Preview {
-    RecordView()        
-        .environmentObject(ScoradManager())
-        .environmentObject(ScoreManager())
-}
+
