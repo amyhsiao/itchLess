@@ -55,12 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		234900222CD5084A00A98735 /* ARObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARObjectManager.swift; path = ../../../../../../../Downloads/game_test/game_test/ARObjectManager.swift; sourceTree = "<group>"; };
-		234900232CD5084A00A98735 /* ARObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARObjectView.swift; path = ../../../../../../../Downloads/game_test/game_test/ARObjectView.swift; sourceTree = "<group>"; };
-		234900242CD5084A00A98735 /* ARObjectEnterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARObjectEnterView.swift; path = ../../../../../../../Downloads/game_test/game_test/ARObjectEnterView.swift; sourceTree = "<group>"; };
-		234900252CD5084A00A98735 /* AREducationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AREducationView.swift; path = ../../../../../../../Downloads/game_test/game_test/AREducationView.swift; sourceTree = "<group>"; };
-		2349002A2CD5086B00A98735 /* cute_monster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = cute_monster.usdz; path = ../../../../../../../Downloads/game_test/game_test/cute_monster.usdz; sourceTree = "<group>"; };
-		2349002B2CD5086B00A98735 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = yolov8n.mlpackage; path = ../../../../../../../Downloads/game_test/game_test/yolov8n.mlpackage; sourceTree = "<group>"; };
+		234900222CD5084A00A98735 /* ARObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARObjectManager.swift; sourceTree = "<group>"; };
+		234900232CD5084A00A98735 /* ARObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARObjectView.swift; sourceTree = "<group>"; };
+		234900242CD5084A00A98735 /* ARObjectEnterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARObjectEnterView.swift; sourceTree = "<group>"; };
+		234900252CD5084A00A98735 /* AREducationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AREducationView.swift; sourceTree = "<group>"; };
+		2349002A2CD5086B00A98735 /* cute_monster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cute_monster.usdz; sourceTree = "<group>"; };
+		2349002B2CD5086B00A98735 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
 		2395C4402CD47B2500548D62 /* EndGameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameInfo.swift; sourceTree = "<group>"; };
 		2395C4412CD47B2500548D62 /* game02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = game02.swift; sourceTree = "<group>"; };
 		23B8C0522C47BC9600287BDF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
