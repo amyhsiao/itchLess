@@ -54,7 +54,7 @@ struct ARObjectView: UIViewRepresentable {
             let pixelBuffer = frame.capturedImage
             detectObject(in: pixelBuffer) { observations in
                 for observation in observations {
-                    if let topLabel = observation.labels.first(where: { $0.identifier == "bed" }) {
+                    if let topLabel = observation.labels.first(where: { $0.identifier == "teddy bear" }) {
                         print("辨識到 'keyboard'")
                         let bbox = observation.boundingBox
                         let center = CGPoint(x: bbox.midX, y: bbox.midY)
